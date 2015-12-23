@@ -12,6 +12,8 @@ void	swap(t_stack *stack)
 	if (stack->first->previous)
 		stack->first->previous->next = stack->first;
 	conform_stack(stack);
+	stack->first->change =1;
+	stack->second->change =1;
 }
 
 void	push(t_stack *dest, t_stack *src)
@@ -34,6 +36,7 @@ void	push(t_stack *dest, t_stack *src)
 		tmp->previous->next = tmp;
 	conform_stack(src);
 	conform_stack(dest);
+	dest->first->change = 1;
 }
 
 void	rotate(t_stack *stack)

@@ -14,6 +14,7 @@ struct					s_elem
 	t_elem				*next;
 	t_elem				*previous;
 	t_elem				*pre_next;
+	char				change;
 };
 
 struct					s_stack
@@ -31,6 +32,11 @@ struct					s_app
 	t_stack				a;
 	t_stack				b;
 	int					tmp;
+	char				color;
+	char				debug;
+	char				manual;
+	char				file;
+	char				highlight;
 };
 
 void					init_app(t_app **app, int ac, char **av);
@@ -43,7 +49,7 @@ void					init_stack(t_app *app);
 void					free_stack(t_app *app);
 
 void					read_arg(t_app *app);
-void					print_stack(t_stack *stack);
+void					print_stack(t_stack *stack, t_app *app);
 void					print_stacks(t_app *app);
 void					conform_stack(t_stack *stack);
 

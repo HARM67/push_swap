@@ -50,9 +50,13 @@ int		need_swap_ab(t_app *app)
 {
 	if (app->b.first == 0 || app->b.second == 0)
 		return (0);
+	if (app->a.first == 0 || app->a.second == 0)
+		return (0);
 	if (app->a.first->nbr > app->a.second->nbr
-		&& app->a.first->pre_nbr != app->nbr_nb
-		&& app->a.second->pre_nbr != app->nbr_nb
+		
+		&& !((app->a.first->pre_nbr == 1//app->nbr_nb
+		|| app->a.second->pre_nbr == 1)//app->nbr_nb)
+		&& app->a.second == app->a.last)
 		&& app->tmp == 2)
 	{
 		app->tmp == 0;
@@ -66,6 +70,8 @@ int		need_swap_ab(t_app *app)
 
 int		need_swap_a(t_app *app)
 {
+	if (app->a.first == 0 || app->a.second == 0)
+		return (0);
 	if (app->a.first->nbr > app->a.second->nbr
 		&& app->a.first->pre_nbr != app->nbr_nb
 		&& app->a.second->pre_nbr != app->nbr_nb)
@@ -133,6 +139,8 @@ void	resolve(t_app *app)
 	void (*f_p)(t_stack *);
 
 	f_p = (calculate_rot(app) > 0) ? reverse_rotate : rotate;
+	if (app->debug == 1)
+		print_stacks(app);
 	while (!control(app))
 	{
 		if (need_swap_ab(app));
@@ -141,12 +149,16 @@ void	resolve(t_app *app)
 		else if (need_push(app));
 		else
 			f_p(&(app->a));
+		if (app->debug == 1)
+			print_stacks(app);
 		i++;
 	}
 	while (app->b.first)
 	{
 		push(&(app->a), &(app->b));
 		ft_printf("pa ");
+		if (app->debug == 1)
+			print_stacks(app);
 	}
 	ft_printf("\n");
 }

@@ -78,5 +78,4 @@ void			pre_resolve(t_stack *stack)
 		p = p->next;
 	}
 	pre_nbr(pre_first);
-	//print_pre_resolve(pre_first);
 	}

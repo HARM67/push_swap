@@ -13,8 +13,10 @@ void	init_app(t_app **app, int ac, char **av)
 void	run_app(t_app *app)
 {
 	pre_resolve(&(app->a));
-	resolve(app);
-	manual(app);
+	if (app->manual)
+		manual(app);
+	else
+		resolve(app);
 }
 
 void	free_app(t_app **app)
