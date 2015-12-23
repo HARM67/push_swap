@@ -13,7 +13,9 @@ void	init_app(t_app **app, int ac, char **av)
 void	run_app(t_app *app)
 {
 	pre_resolve(&(app->a));
-	if (app->manual)
+	if (app->file)
+		from_file(app);
+	else if (app->manual)
 		manual(app);
 	else
 		resolve(app);

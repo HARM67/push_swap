@@ -12,7 +12,6 @@
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-# define BUFF_SIZE 4096
 # include "libft.h"
 # include <unistd.h>
 # include <stdarg.h>

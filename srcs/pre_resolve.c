@@ -54,15 +54,6 @@ void			pre_nbr(t_elem *first)
 	}
 }
 
-void			print_pre_resolve(t_elem *first)
-{
-	while (first)
-	{
-		ft_printf("%d ", first->nbr);
-		first = first->pre_next;
-	}
-}
-
 void			pre_resolve(t_stack *stack)
 {
 	t_elem *p;

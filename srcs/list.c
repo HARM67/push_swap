@@ -1,19 +1,5 @@
 #include "push_swap.h"
 
-t_elem	*new_elem(int data, t_elem *previous)
-{
-	t_elem	*elem;
-
-	elem = (t_elem*)ft_memalloc(sizeof(t_elem));
-	if (elem == 0)
-		put_error();
-	elem->nbr = data;
-	elem->previous = previous;
-	if (previous)
-		previous->next = elem;
-	return (elem);
-}
-
 void	conform_stack(t_stack *stack)
 {
 	t_elem *tmp;
@@ -46,6 +32,8 @@ void	read_param(t_app *app, unsigned int *i)
 		app->file = 1;
 	else if (ft_strcmp(app->av[*i], "-h") == 0)
 		app->highlight = 1;
+	else if (ft_strcmp(app->av[*i], "-f") == 0)
+		app->file = 1;
 	else
 		put_error();
 }

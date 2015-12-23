@@ -2,6 +2,7 @@
 # define PUSH_SWAP_H
 # include <stdlib.h>
 # include "ft_printf.h"
+# include "get_next_line.h"
 
 typedef struct s_elem	t_elem;
 typedef struct s_stack	t_stack;
@@ -23,7 +24,6 @@ struct					s_stack
 	t_elem				*second;
 	t_elem				*last;
 };
-
 struct					s_app
 {
 	int					ac;
@@ -37,6 +37,7 @@ struct					s_app
 	char				manual;
 	char				file;
 	char				highlight;
+	int					temoin;
 };
 
 void					init_app(t_app **app, int ac, char **av);
@@ -58,10 +59,24 @@ void					push(t_stack *dest, t_stack *src);
 void					rotate(t_stack *stack);
 void 					reverse_rotate(t_stack *stack);
 
+int						manual_reverse_rotate(t_app *app, char *tmp);
+int						manual_rotate(t_app *app, char *tmp);
+int						manual_push(t_app *app, char *tmp);
+int						manual_swap(t_app *app, char *tmp);
 void					manual(t_app *app);
 
 void					pre_resolve(t_stack *stack);
 
 void					resolve(t_app *app);
 int						control(t_app *app);
+
+int						need_swap_ab(t_app *app);
+int						need_swap_a(t_app *app);
+int						need_swap_b(t_app *app);
+int						need_push2(t_app *app);
+int						need_push(t_app *app);
+
+t_elem					*new_elem(int data, t_elem *previous);
+
+void					from_file(t_app *app);
 #endif

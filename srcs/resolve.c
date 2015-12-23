@@ -46,91 +46,19 @@ int		control(t_app *app)
 	return (rt);
 }
 
-int		need_swap_ab(t_app *app)
+void	resolve2(t_app *app)
 {
-	if (app->b.first == 0 || app->b.second == 0)
-		return (0);
-	if (app->a.first == 0 || app->a.second == 0)
-		return (0);
-	if (app->a.first->nbr > app->a.second->nbr
-		
-		&& !((app->a.first->pre_nbr == 1//app->nbr_nb
-		|| app->a.second->pre_nbr == 1)//app->nbr_nb)
-		&& app->a.second == app->a.last)
-		&& app->tmp == 2)
+	while (app->b.first)
 	{
-		app->tmp == 0;
-		ft_printf("ss ");
-		swap(&(app->a));
-		swap(&(app->b));
-		return (1);
+		if (app->temoin && !app->debug)
+			ft_printf(" ");
+		push(&(app->a), &(app->b));
+		ft_printf("pa");
+		if (app->debug == 1)
+			print_stacks(app);
+			app->temoin = 1;
 	}
-	return(0);
-}
-
-int		need_swap_a(t_app *app)
-{
-	if (app->a.first == 0 || app->a.second == 0)
-		return (0);
-	if (app->a.first->nbr > app->a.second->nbr
-		&& app->a.first->pre_nbr != app->nbr_nb
-		&& app->a.second->pre_nbr != app->nbr_nb)
-	{
-		swap(&(app->a));
-		ft_printf("sa ");
-		return (1);
-	}
-	return(0);
-}
-
-int		need_swap_b(t_app *app)
-{
-	if (app->b.first == 0 || app->b.second == 0)
-		return (0);
-	if (app->tmp == 2)
-	{
-		app->tmp = 0;
-		swap(&(app->b));
-		ft_printf("sb ");
-		return (1);
-	}
-	return(0);
-}
-
-int		need_push(t_app *app)
-{
-	if (app->b.first == 0
-		&& (app->a.first->pre_nbr != app->nbr_nb
-			&& app->a.first->pre_nbr != app->nbr_nb - 1))
-		return (0);
-	if ((app->a.first->pre_nbr == app->nbr_nb && app->tmp == 0) 
-			|| (app->a.first->pre_nbr == app->nbr_nb - 1
-				&& app->tmp == 0)
-			|| (app->a.first->pre_nbr == app->b.first->pre_nbr - 1
-				&& app->tmp == 0))
-	{
-		if (app->a.first->pre_nbr == app->nbr_nb - 1)
-			app->tmp = 1;
-		push(&(app->b), &(app->a));
-		ft_printf("pb ");
-		return (1);
-	}
-	if (app->a.first->pre_nbr != 1
-			&& (app->a.first->pre_nbr == app->b.first->pre_nbr - 2
-				&& app->tmp == 0)
-			|| (app->a.first->pre_nbr == app->b.first->pre_nbr + 1
-				&& app->tmp == 1))
-
-	{
-		if (app->a.first->pre_nbr == app->b.first->pre_nbr - 2)
-			app->tmp = 1;
-		if (app->a.first->pre_nbr == app->b.first->pre_nbr + 1)
-			app->tmp = 2;
-		push(&(app->b), &(app->a));
-		ft_printf("pb ");
-		return (1);
-	}
-	return (0);
+	ft_printf("\n");
 }
 
 void	resolve(t_app *app)
@@ -143,22 +71,21 @@ void	resolve(t_app *app)
 		print_stacks(app);
 	while (!control(app))
 	{
+		if (app->temoin && !app->debug)
+			ft_printf(" ");
 		if (need_swap_ab(app));
 		else if (need_swap_a(app));
 		else if (need_swap_b(app));
 		else if (need_push(app));
 		else
+		{
+			(f_p == rotate) ? ft_printf("ra"): ft_printf("rra");
 			f_p(&(app->a));
+		}
 		if (app->debug == 1)
 			print_stacks(app);
+			app->temoin = 1;
 		i++;
 	}
-	while (app->b.first)
-	{
-		push(&(app->a), &(app->b));
-		ft_printf("pa ");
-		if (app->debug == 1)
-			print_stacks(app);
-	}
-	ft_printf("\n");
+	resolve2(app);
 }
