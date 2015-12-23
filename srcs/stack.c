@@ -9,9 +9,19 @@ void	init_stack(t_app *app)
 
 void	free_stack(t_app *app)
 {
-	if (app->a.first)
-		free(app->a.first);
-	if (app->b.first)
-		free(app->b.first);
+	t_elem *p;
+
+	while (app->a.last)
+	{
+		p = app->a.last->next;
+		free(app->a.last->next);
+		app->a.last = p;
+	}
+	while (app->b.last)
+	{
+		p = app->b.last->next;
+		free(app->b.last->next);
+		app->b.last = p;
+	}
 }
 

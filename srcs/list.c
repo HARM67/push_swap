@@ -8,7 +8,6 @@ t_elem	*new_elem(int data, t_elem *previous)
 	if (elem == 0)
 		put_error();
 	elem->nbr = data;
-	elem->next = 0;
 	elem->previous = previous;
 	if (previous)
 		previous->next = elem;
@@ -38,27 +37,39 @@ void	conform_stack(t_stack *stack)
 void	read_arg(t_app *app)
 {
 	unsigned int	i;
+	unsigned int	nbr_nb;
 	t_elem			*tmp;
+
 
 	tmp = 0;
 	i = 1;
+	nbr_nb = 0;
 	while (i < app->ac)
 	{
 		if (ft_isdigit(**(app->av)))
 			put_error();
 		app->a.first = new_elem(ft_atoi((app->av)[i]), app->a.first);
 		i++;
+		nbr_nb++;
 	}
 	conform_stack(&(app->a));
+	app->nbr_nb = nbr_nb;
 }
 
 void	print_stacks(t_app *app)
 {
-	ft_printf("{FG_GREEN}{BOLD}a : {EOC}");
+	if (control(app) == 1)
+		ft_printf("{FG_GREEN}{DARK}");
+	else if (control(app) == 2)
+		ft_printf("{FG_YELLOW}");
+	else
+		ft_printf("{FG_RED}");
+	ft_printf("a : ");
 	print_stack(&(app->a));
-	ft_printf("\n{FG_GREEN}{BOLD}b : {EOC}");
+	ft_printf("\nb : ");
 	print_stack(&(app->b));
-	ft_printf("\n");
+	ft_printf("\n\n");
+	ft_printf("{EOC}");
 }
 
 void	print_stack(t_stack *stack)
@@ -68,7 +79,7 @@ void	print_stack(t_stack *stack)
 	tmp = stack->last;
 	while (tmp)
 	{
-		ft_printf("%d ", tmp->nbr);
+		ft_printf("%3d ", tmp->nbr);
 		tmp = tmp->next;
 	}
 }

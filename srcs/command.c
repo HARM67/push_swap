@@ -35,3 +35,28 @@ void	push(t_stack *dest, t_stack *src)
 	conform_stack(src);
 	conform_stack(dest);
 }
+
+void	rotate(t_stack *stack)
+{
+	if (stack->first == 0 || stack->second == 0)
+		return ;
+	stack->first->next = stack->last;
+	stack->last->previous = stack->first;
+	stack->second->next = 0;
+	stack->first->previous = 0;
+	stack->first = stack->second;
+	ft_printf("ra ");
+	conform_stack(stack);
+}
+
+void reverse_rotate(t_stack *stack)
+{
+	if (stack->first == 0 || stack->second == 0)
+		return ;
+	stack->first->next = stack->last;
+	stack->last->previous = stack->first;
+	stack->last->next->previous = 0;
+	stack->last->next = 0;
+	ft_printf("rra ");
+	conform_stack(stack);
+}

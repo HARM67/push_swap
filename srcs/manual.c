@@ -22,6 +22,24 @@ void	manual(t_app *app)
 			push(&(app->a), &(app->b));
 		else if (ft_memcmp(tmp, "pb", 2) == 0)
 			push(&(app->b), &(app->a));
+		else if (ft_memcmp(tmp, "rra", 3) == 0)
+			reverse_rotate(&(app->a));
+		else if (ft_memcmp(tmp, "rrb", 3) == 0)
+			reverse_rotate(&(app->b));
+		else if (ft_memcmp(tmp, "rrr", 3) == 0)
+		{
+			reverse_rotate(&(app->a));
+			reverse_rotate(&(app->b));
+		}
+		else if (ft_memcmp(tmp, "ra", 2) == 0)
+			rotate(&(app->a));
+		else if (ft_memcmp(tmp, "rb", 2) == 0)
+			rotate(&(app->b));
+		else if (ft_memcmp(tmp, "rr", 2) == 0)
+		{
+			rotate(&(app->a));
+			rotate(&(app->b));
+		}
 		else if (ft_memcmp(tmp, "exit", 4) == 0)
 			break ;
 	}

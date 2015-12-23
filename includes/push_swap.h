@@ -10,8 +10,10 @@ typedef struct s_app	t_app;
 struct					s_elem
 {
 	int					nbr;
+	int					pre_nbr;
 	t_elem				*next;
 	t_elem				*previous;
+	t_elem				*pre_next;
 };
 
 struct					s_stack
@@ -25,8 +27,10 @@ struct					s_app
 {
 	int					ac;
 	char				**av;
+	int					nbr_nb;
 	t_stack				a;
 	t_stack				b;
+	int					tmp;
 };
 
 void					init_app(t_app **app, int ac, char **av);
@@ -45,6 +49,13 @@ void					conform_stack(t_stack *stack);
 
 void					swap(t_stack *stack);
 void					push(t_stack *dest, t_stack *src);
+void					rotate(t_stack *stack);
+void 					reverse_rotate(t_stack *stack);
 
 void					manual(t_app *app);
+
+void					pre_resolve(t_stack *stack);
+
+void					resolve(t_app *app);
+int						control(t_app *app);
 #endif

@@ -12,6 +12,8 @@ void	init_app(t_app **app, int ac, char **av)
 
 void	run_app(t_app *app)
 {
+	pre_resolve(&(app->a));
+	resolve(app);
 	manual(app);
 }
 
