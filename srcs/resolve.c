@@ -63,7 +63,6 @@ void	resolve2(t_app *app)
 
 void	resolve(t_app *app)
 {
-	int i = 0;
 	void (*f_p)(t_stack *);
 
 	f_p = (calculate_rot(app) > 0) ? reverse_rotate : rotate;
@@ -85,7 +84,6 @@ void	resolve(t_app *app)
 		if (app->debug == 1)
 			print_stacks(app);
 			app->temoin = 1;
-		i++;
 	}
 	resolve2(app);
 }

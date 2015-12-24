@@ -44,22 +44,25 @@ void	read_arg(t_app *app)
 	unsigned int	nbr_nb;
 	t_elem			*tmp;
 
-
 	tmp = 0;
 	i = 1;
 	nbr_nb = 0;
 	while (i < app->ac)
 	{
-		if (!ft_isdigit(*(app->av)[i]))
+		if ((*(app->av)[i]) == '-' && !ft_isdigit(*(app->av[i] + 1)))
 			read_param(app, &i);
 		else
 		{
-			app->a.first = new_elem(ft_atoi((app->av)[i]), app->a.first);
+			app->a.first = new_elem(ft_atoi_8((app->av)[i]), app->a.first);
+			if (app->a.first->nbr > 2147483647
+				|| app->a.first->nbr < -2147483648)
+				put_error();
 			nbr_nb++;
 		}
 		i++;
 	}
 	conform_stack(&(app->a));
+	control_double(&(app->a));
 	app->nbr_nb = nbr_nb;
 }
 

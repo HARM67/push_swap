@@ -10,8 +10,8 @@ typedef struct s_app	t_app;
 
 struct					s_elem
 {
-	int					nbr;
-	int					pre_nbr;
+	long int					nbr;
+	long int					pre_nbr;
 	t_elem				*next;
 	t_elem				*previous;
 	t_elem				*pre_next;
@@ -76,7 +76,10 @@ int						need_swap_b(t_app *app);
 int						need_push2(t_app *app);
 int						need_push(t_app *app);
 
-t_elem					*new_elem(int data, t_elem *previous);
+t_elem					*new_elem(long int data, t_elem *previous);
+void					control_double(t_stack *stack);
 
 void					from_file(t_app *app);
+
+long int				ft_atoi_8(const char *str);
 #endif

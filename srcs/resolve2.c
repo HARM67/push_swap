@@ -7,13 +7,13 @@ int		need_swap_ab(t_app *app)
 	if (app->a.first == 0 || app->a.second == 0)
 		return (0);
 	if (app->a.first->nbr > app->a.second->nbr
-		
-		&& !((app->a.first->pre_nbr == 1//app->nbr_nb
-		|| app->a.second->pre_nbr == 1)//app->nbr_nb)
-		&& app->a.second == app->a.last)
+		&& app->a.first->pre_nbr != app->nbr_nb
+		&& app->a.second->pre_nbr != app->nbr_nb
+		&& app->a.first->pre_nbr != 1
+		&& app->a.second->pre_nbr != 1
 		&& app->tmp == 2)
 	{
-		app->tmp == 0;
+		app->tmp = 0;
 		ft_printf("ss");
 		swap(&(app->a));
 		swap(&(app->b));
@@ -28,7 +28,9 @@ int		need_swap_a(t_app *app)
 		return (0);
 	if (app->a.first->nbr > app->a.second->nbr
 		&& app->a.first->pre_nbr != app->nbr_nb
-		&& app->a.second->pre_nbr != app->nbr_nb)
+		&& app->a.second->pre_nbr != app->nbr_nb
+		&& app->a.first->pre_nbr != 1
+		&& app->a.second->pre_nbr != 1)
 	{
 		swap(&(app->a));
 		ft_printf("sa");
