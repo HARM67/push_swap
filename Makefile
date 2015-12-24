@@ -3,7 +3,8 @@ INCLUDES=./includes
 COMPILER = gcc
 LIB=./
 SRCS=main.c error.c app.c stack.c list.c command.c manual.c pre_resolve.c \
-	resolve.c resolve2.c util.c get_next_line.c file.c ft_atoi_8.c
+	resolve.c resolve2.c util.c get_next_line.c file.c ft_atoi_8.c \
+	ft_strtest.c
 SRC_PATH=./srcs/
 OBJ=$(SRCS:.c=.o)
 FLAG= -g

@@ -33,3 +33,12 @@ void	control_double(t_stack *stack)
 		elem = elem->next;
 	}
 }
+
+int		control_arg(char *str)
+{
+	if (ft_strtest(str, ft_isdigit))
+		return (1);
+	if (*str == '-' && ft_strtest(str + 1, ft_isdigit))
+		return (1);
+	return (0);
+}

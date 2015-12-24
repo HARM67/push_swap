@@ -37,6 +37,7 @@ struct					s_app
 	char				manual;
 	char				file;
 	char				highlight;
+	char				result;
 	int					temoin;
 };
 
@@ -82,4 +83,7 @@ void					control_double(t_stack *stack);
 void					from_file(t_app *app);
 
 long int				ft_atoi_8(const char *str);
+
+int						ft_strtest(char *str, int (*f)(int));
+int						control_arg(char *str);
 #endif

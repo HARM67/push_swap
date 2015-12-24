@@ -56,7 +56,7 @@ void	resolve2(t_app *app)
 		ft_printf("pa");
 		if (app->debug == 1)
 			print_stacks(app);
-			app->temoin = 1;
+		app->temoin = 1;
 	}
 	ft_printf("\n");
 }

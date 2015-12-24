@@ -34,6 +34,8 @@ void	read_param(t_app *app, unsigned int *i)
 		app->highlight = 1;
 	else if (ft_strcmp(app->av[*i], "-f") == 0)
 		app->file = 1;
+	else if (ft_strcmp(app->av[*i], "-r") == 0)
+		app->result = 1;
 	else
 		put_error();
 }
@@ -55,7 +57,8 @@ void	read_arg(t_app *app)
 		{
 			app->a.first = new_elem(ft_atoi_8((app->av)[i]), app->a.first);
 			if (app->a.first->nbr > 2147483647
-				|| app->a.first->nbr < -2147483648)
+				|| app->a.first->nbr < -2147483648
+				|| !control_arg((app->av)[i]))
 				put_error();
 			nbr_nb++;
 		}
