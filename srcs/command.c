@@ -31,11 +31,14 @@ void	push(t_stack *dest, t_stack *src)
 	else
 		src->first = 0;
 	tmp->previous = dest->first;
+	tmp->what_stack = dest->stack_nbr;
 	dest->first = tmp;
 	if (tmp->previous)
 		tmp->previous->next = tmp;
 	conform_stack(src);
 	conform_stack(dest);
+	(src->size)--;
+	(dest->size)++;
 	dest->first->change = 1;
 }
 

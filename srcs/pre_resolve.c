@@ -54,19 +54,17 @@ void			pre_nbr(t_elem *first)
 	}
 }
 
-void			pre_resolve(t_stack *stack)
+void			pre_resolve(t_app *app)
 {
 	t_elem *p;
-	t_elem *pre_first;
 
-	p = stack->last;
-	pre_first = 0;
+	p = app->a.last;
 	while (p)
 	{
-		if (insert_elem_first(&pre_first, p));
-		else if (insert_elem_back(&pre_first, p));
-		else if (insert_elem(pre_first, p));
+		if (insert_elem_first(&(app->pre), p));
+		else if (insert_elem_back(&(app->pre), p));
+		else if (insert_elem(app->pre, p));
 		p = p->next;
 	}
-	pre_nbr(pre_first);
-	}
+	pre_nbr(app->pre);
+}

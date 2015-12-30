@@ -26,6 +26,8 @@ void	read_param(t_app *app, unsigned int *i)
 		app->debug = 1;
 	else if (ft_strcmp(app->av[*i], "-c") == 0)
 		app->color = 1;
+	else if (ft_strcmp(app->av[*i], "-md") == 0)
+		app->manual_debug = 1;
 	else if (ft_strcmp(app->av[*i], "-m") == 0)
 		app->manual = 1;
 	else if (ft_strcmp(app->av[*i], "-f") == 0)
@@ -55,15 +57,12 @@ void	read_arg(t_app *app)
 			read_param(app, &i);
 		else
 		{
-			app->a.first = new_elem(ft_atoi_8((app->av)[i]), app->a.first);
-			if (app->a.first->nbr > 2147483647
-				|| app->a.first->nbr < -2147483648
-				|| !control_arg((app->av)[i]))
-				put_error();
+			read_elem(app, i, nbr_nb);
 			nbr_nb++;
 		}
 		i++;
 	}
+	app->a.size = nbr_nb;
 	conform_stack(&(app->a));
 	control_double(&(app->a));
 	app->nbr_nb = nbr_nb;
