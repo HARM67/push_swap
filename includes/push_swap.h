@@ -4,7 +4,7 @@
 # include "ft_printf.h"
 # include "get_next_line.h"
 # define ABS(x) ((x > 0) ? x : -x)
-# define MAX_BLOCK 0.50
+# define MAX_BLOCK 0.3
 
 typedef struct s_table t_table;
 typedef struct s_elem	t_elem;

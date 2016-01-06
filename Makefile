@@ -12,7 +12,7 @@ FLAG= -g
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) $(INCLUDES)/get_next_line.h $(INCLUDES)/push_swap.h
 	$(COMPILER) -o $(NAME) -I$(INCLUDES) $(OBJ) -L$(LIB) -lftprintf
 
 %.o: $(SRC_PATH)%.c
