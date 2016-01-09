@@ -19,8 +19,10 @@ struct					s_elem
 	t_elem				*previous;
 	t_elem				*pre_next;
 	char				change;
-	char				what_stack;
 	unsigned int		read_nbr;
+	unsigned int		dec;
+	int					gain;
+	char				what_stack;
 	unsigned int		current_nbr;
 	unsigned int		block_nbr;
 };
@@ -66,6 +68,7 @@ struct					s_app
 	char				result;
 	int					temoin;
 	t_table				statistic;
+	unsigned int		gene_nb;
 };
 
 void					init_app(t_app **app, int ac, char **av);

@@ -41,15 +41,15 @@ static int		insert_elem(t_elem *lst, t_elem *n_elem)
 	return (0);
 }
 
-void			pre_nbr(t_elem *first)
+void			pre_nbr(t_elem *first, t_app *app)
 {
 	int i;
 
-	i = 1;
+	i = app->nbr_nb;
 	while (first)
 	{
 		first->pre_nbr = i;
-		i++;
+		i--;
 		first = first->pre_next;
 	}
 }
@@ -66,5 +66,5 @@ void			pre_resolve(t_app *app)
 		else if (insert_elem(app->pre, p));
 		p = p->next;
 	}
-	pre_nbr(app->pre);
+	pre_nbr(app->pre, app);
 }

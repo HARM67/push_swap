@@ -1,5 +1,5 @@
 #include "push_swap.h"
-
+/*
 int		for_block(int nb, t_app *app)
 {
 	if (ABS(nb) < (int)(app->nbr_nb / 2 * MAX_BLOCK))
@@ -46,3 +46,4 @@ void	print_table(t_table *table, t_app *app)
 		i++;
 	}
 }
+*/

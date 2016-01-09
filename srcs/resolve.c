@@ -23,7 +23,7 @@ int		control(t_app *app)
 	t_elem	*p;
 	int rt;
 
-	i = 1;
+	i = app->nbr_nb;
 	rt = 1;
 	p = app->a.last;
 	while (p)
@@ -31,9 +31,9 @@ int		control(t_app *app)
 		if (i != p->pre_nbr)
 			return (0);
 		p = p->next;
-		i++;
+		i--;
 	}
-	i = app->nbr_nb;
+	i = 1;
 	p = app->b.last;
 	while (p)
 	{
@@ -41,7 +41,7 @@ int		control(t_app *app)
 		if (i != p->pre_nbr)
 			return (0);
 		p = p->next;
-		i--;
+		i++;
 	}
 	return (rt);
 }

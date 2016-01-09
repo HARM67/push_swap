@@ -13,7 +13,7 @@ void	init_app(t_app **app, int ac, char **av)
 void	run_app(t_app *app)
 {
 	pre_resolve(app);
-	create_table(&app->statistic, app->nbr_nb);
+	//create_table(&app->statistic, app->nbr_nb);
 	if (app->file)
 		from_file(app);
 	else if (app->manual_debug)

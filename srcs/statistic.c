@@ -1,5 +1,6 @@
 #include "push_swap.h"
 
+/*
 int		shorter(int nb, t_app *app)
 {
 	if (nb > (int)app->nbr_nb / 2)
@@ -54,3 +55,4 @@ void	make_statistic_current(t_app *app)
 	fill_table_current(app);
 	print_table(&app->statistic, app);
 }
+*/
