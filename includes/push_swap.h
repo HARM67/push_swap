@@ -25,6 +25,11 @@ struct					s_elem
 	char				what_stack;
 	unsigned int		current_nbr;
 	unsigned int		block_nbr;
+	unsigned int		generation;
+	unsigned int		zone_size;
+	unsigned int		gap;
+	char				need_swap;
+	char				move_b;
 };
 
 struct					s_table
@@ -58,6 +63,7 @@ struct					s_app
 	t_stack				a;
 	t_stack				b;
 	t_elem				*pre;
+	t_elem				*zone_select;
 	int					tmp;
 	char				color;
 	char				debug;
@@ -69,6 +75,8 @@ struct					s_app
 	int					temoin;
 	t_table				statistic;
 	unsigned int		gene_nb;
+	unsigned int		*swap_comb;
+	unsigned int		best;
 };
 
 void					init_app(t_app **app, int ac, char **av);

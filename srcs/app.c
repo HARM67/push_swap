@@ -8,6 +8,8 @@ void	init_app(t_app **app, int ac, char **av)
 	(*app)->ac = ac;
 	(*app)->av = av;
 	init_stack(*app);
+	(*app)->swap_comb = (unsigned int *)ft_memalloc(sizeof(unsigned int) * (*app)->nbr_nb);
+	(*app)->best = (*app)->nbr_nb;
 }
 
 void	run_app(t_app *app)

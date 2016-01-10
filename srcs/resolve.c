@@ -24,9 +24,16 @@ int		control(t_app *app)
 	int rt;
 
 	i = app->nbr_nb;
-	rt = 1;
+	rt = 0;
 	p = app->a.last;
 	while (p)
+	{
+		rt += p->dec;
+		p = p->next;
+	}
+	if (i == rt)
+		return ((app->a.last->pre_nbr == i) ? 1 : 2);
+/*	while (p)
 	{
 		if (i != p->pre_nbr)
 			return (0);
@@ -43,7 +50,7 @@ int		control(t_app *app)
 		p = p->next;
 		i++;
 	}
-	return (rt);
+*/	return (rt);
 }
 
 void	resolve2(t_app *app)

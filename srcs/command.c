@@ -12,6 +12,8 @@ void	swap(t_stack *stack)
 	if (stack->first->previous)
 		stack->first->previous->next = stack->first;
 	conform_stack(stack);
+	stack->first->need_swap = 0;
+	stack->second->need_swap = 0;
 	stack->first->change =1;
 	stack->second->change =1;
 }
