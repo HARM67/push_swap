@@ -5,8 +5,10 @@
 # include "get_next_line.h"
 # define ABS(x) ((x > 0) ? x : -x)
 # define MAX_BLOCK 0.3
+# define ANALYZE 10
 
-typedef struct s_table t_table;
+typedef struct s_table	t_table;
+typedef struct s_comm	t_comm;
 typedef struct s_elem	t_elem;
 typedef struct s_stack	t_stack;
 typedef struct s_app	t_app;
@@ -29,7 +31,11 @@ struct					s_elem
 	unsigned int		zone_size;
 	unsigned int		gap;
 	char				need_swap;
+	char				need_swap_b;
 	char				move_b;
+	int					distance_a;
+	int					distance_b;
+	unsigned int		cost;
 };
 
 struct					s_table
@@ -55,6 +61,13 @@ struct					s_stack
 	unsigned int		stack_nbr;
 };
 
+struct					s_comm
+{
+	unsigned int		command;
+	t_comm				*previous;
+	t_comm				*next;
+};
+
 struct					s_app
 {
 	int					ac;
@@ -64,6 +77,8 @@ struct					s_app
 	t_stack				b;
 	t_elem				*pre;
 	t_elem				*zone_select;
+	t_comm				*resolution;
+	t_comm				*last_resol;
 	int					tmp;
 	char				color;
 	char				debug;
@@ -77,6 +92,11 @@ struct					s_app
 	unsigned int		gene_nb;
 	unsigned int		*swap_comb;
 	unsigned int		best;
+	unsigned int		nbr_to_b;
+	int		b_dest;
+	unsigned int		nb_cmd;
+	t_elem				*low_cost;
+	unsigned int		next_cmd;
 };
 
 void					init_app(t_app **app, int ac, char **av);

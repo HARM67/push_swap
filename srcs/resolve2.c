@@ -55,7 +55,7 @@ int		need_swap_b(t_app *app)
 
 int		need_push2(t_app *app)
 {
-	if (app->a.first->pre_nbr != 1
+	/*if (app->a.first->pre_nbr != 1
 			&& (app->a.first->pre_nbr == app->b.first->pre_nbr - 2
 				&& app->tmp == 0)
 			|| (app->a.first->pre_nbr == app->b.first->pre_nbr + 1
@@ -70,7 +70,7 @@ int		need_push2(t_app *app)
 		ft_printf("pb");
 		return (1);
 	}
-	return (0);
+*/	return (0);
 }
 
 int		need_push(t_app *app)

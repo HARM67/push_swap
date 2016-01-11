@@ -50,7 +50,7 @@ int		control(t_app *app)
 		p = p->next;
 		i++;
 	}
-*/	return (rt);
+*/	return (0);
 }
 
 void	resolve2(t_app *app)
