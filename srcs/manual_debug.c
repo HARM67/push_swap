@@ -53,204 +53,6 @@ void	insert_command(t_app *app, unsigned int command)
 		app->last_resol->next = comm;
 }
 */
-unsigned int	stack_size(t_stack *stack)
-{
-	unsigned int i;
-	t_elem *tmp;
-
-	i = 0;
-	tmp = stack->last;
-	if (!tmp)
-		return (0);
-	while (tmp)
-	{
-		i++;
-		tmp = tmp->next;
-	}
-	return (i);
-}
-
-int	go(t_app *app, t_elem *elem)
-{
-	while (elem->distance_a > 0 || elem->distance_b > 0)
-	{
-		if (elem->distance_b > 0 && elem->distance_a > 0)
-		{
-	//		ft_printf("rr ");
-			rotate(&app->a);
-			rotate(&app->b);
-			elem->distance_a--;
-			elem->distance_b--;
-			app->nb_cmd++;
-		}
-		else if (elem->distance_a > 0)
-		{
-	//		ft_printf("ra ");
-			rotate(&app->a);
-			elem->distance_a--;
-			app->nb_cmd++;
-		}
-		else if (elem->distance_b > 0)
-		{
-	//		ft_printf("rb ");
-			rotate(&app->b);
-			elem->distance_b--;
-			app->nb_cmd++;
-		}
-	}
-	while (elem->distance_a < 0 || elem->distance_b < 0)
-	{
-		if (elem->distance_b < 0 && elem->distance_a < 0)
-		{
-	//		ft_printf("rrr ");
-			reverse_rotate(&app->a);
-			reverse_rotate(&app->b);
-			elem->distance_a++;
-			elem->distance_b++;
-			app->nb_cmd++;
-		}
-		else if (elem->distance_a < 0)
-		{
-	//		ft_printf("rra ");
-			reverse_rotate(&app->a);
-			elem->distance_a++;
-			app->nb_cmd++;
-		}
-		else if (elem->distance_b < 0)
-		{
-	//		ft_printf("rrb ");
-			reverse_rotate(&app->b);
-			elem->distance_b++;
-			app->nb_cmd++;
-		}
-	}
-	return (0);
-}
-
-int	good_in_b(t_app *app, t_elem *elem, t_elem *position)
-{
-	t_elem *tmp;
-	t_elem *tmp2;
-
-	tmp = position;
-	tmp2 = previous(app, tmp);
-	if (tmp == tmp2)
-		return (1);
-	while (tmp != tmp2)
-	{
-		if (elem->pre_nbr == tmp->pre_nbr)
-			return (1);
-		tmp = (tmp->pre_next) ? tmp->pre_next : app->pre;
-	}
-	return (0);
-}
-
-t_elem	*next_push_b(t_app *app)
-{
-	int rb;
-	t_elem *tmp;
-	t_elem *tmp2;
-
-	rb = 0;
-	tmp = app->a.first;
-	while (tmp != app->a.last)
-	{
-		if (tmp->move_b)
-		{
-			if (tmp->need_swap == 0 ||
-					(tmp->need_swap == 1 && previous(app, tmp)->move_b == 0))
-				return (tmp);
-			else if (tmp->need_swap == 1 && previous(app, tmp)->move_b)
-				return (previous(app, tmp));
-		}
-		tmp = previous(app, tmp);
-	}
-	return (tmp);
-}
-
-int		dest_b(t_app *app, t_elem *tmp)
-{
-	t_elem *tmp2;
-	int dest;
-	int s_b;
-
-	dest = 0;
-	tmp2 = app->b.last;
-	while (tmp2 && !good_in_b(app, tmp, tmp2))
-	{
-		tmp2 = previous(app, tmp2);
-		dest++;
-	}
-	s_b = stack_size(&app->b);
-	if (dest > s_b / 2)
-		dest -= s_b;
-	return (dest);
-}
-
-void	make_cost(t_elem *elem)
-{
-	if (elem->distance_a > 0 && elem->distance_b > 0)
-		elem->cost = (elem->distance_a > elem->distance_b) ?
-			elem->distance_a : elem->distance_b;
-	else if (elem->distance_a < 0 && elem->distance_b < 0)
-		elem->cost = (elem->distance_a < elem->distance_b) ?
-			-elem->distance_a: -elem->distance_b;
-	else
-		elem->cost = ABS(elem->distance_a) + ABS( elem->distance_b);
-}
-
-void	normalize_cost(t_app *app, t_elem *elem)
-{
-	int a_size;
-	int b_size;
-
-	a_size = stack_size(&app->a);
-	b_size = stack_size(&app->b);
-	if (elem->distance_a > a_size / 2)
-		elem->distance_a -= a_size;
-}
-
-void	make_costs(t_app *app)
-{
-	int i;
-	t_elem *tmp;
-	int size;
-	int low;
-
-	size = stack_size(&app->a);
-	low = 2147483647;
-	tmp = app->a.first;
-	i = 0;
-	app->next_cmd = 0;
-	if (size == 1)
-	{
-		app->low_cost = tmp;
-		return ;
-	}
-	while (i < size)
-	{
-			tmp->distance_a = (i <= size / 2) ? i : i - size;
-			tmp->distance_b = dest_b(app, tmp);
-			make_cost(tmp);
-			normalize_cost(app, tmp);
-			if (ABS(tmp->distance_a) < low && tmp->need_swap && previous(app, tmp)->need_swap == 2)
-			{
-				low = ABS(tmp->distance_a);
-				app->low_cost = tmp;
-				tmp->distance_b = 0;
-				app->next_cmd = 1;
-			}
-			if (tmp->cost < low && tmp->move_b && tmp->need_swap == 0 && 
-					previous(app, tmp)->need_swap == 0)
-			{
-				low = tmp->cost;
-				app->low_cost = tmp;
-				app->next_cmd = 2;
-			}
-		tmp = previous(app, tmp);
-		i++;
-	}
-}
 
 void	last_swap(t_app *app)
 {
@@ -262,7 +64,6 @@ void	last_swap(t_app *app)
 	go(app, tmp);
 	if (app->next_cmd == 1)
 	{
-	//	ft_printf("sa ");
 		swap(&app->a);
 	app->nb_cmd++;
 		return;
@@ -281,7 +82,7 @@ void	recup_dans_b(t_app *app)
 	{
 	//	ft_printf("sa ");
 		swap(&app->a);
-	app->nb_cmd++;
+		app->nb_cmd++;
 		return;
 	}
 	else if (app->next_cmd == 2)
@@ -334,13 +135,9 @@ t_elem	*max_stack(t_stack *stack)
 void	come_to_start(t_app *app)
 {
 	t_elem move;
-	int s_a;
-	int s_b;
 	t_elem *tmp;
 	int i;
 
-	s_a = stack_size(&app->a);
-	s_b = stack_size(&app->b);
 	tmp = app->a.first;
 	i = 0;
 	while (tmp->pre_nbr !=  min_stack(&app->a)->pre_nbr)
@@ -348,7 +145,7 @@ void	come_to_start(t_app *app)
 		i++;
 		tmp = tmp->previous;
 	}
-	move.distance_a = (i <= s_a / 2) ? i : i - s_a;
+	move.distance_a = (i <= app->a.size / 2) ? i : i - app->a.size;
 	i = 0;
 	if (app->b.first)
 	{
@@ -358,7 +155,7 @@ void	come_to_start(t_app *app)
 			i++;
 			tmp = tmp->previous;
 		}
-		move.distance_b = (i <= s_b / 2) ? i : i - s_b;
+		move.distance_b = (i <= app->b.size / 2) ? i : i - app->b.size;
 	}
 	else
 		move.distance_b = 0;
@@ -371,12 +168,8 @@ void	go_b(t_app *app)
 	t_elem *tmp;
 	t_elem *tmp2;
 	t_elem move;
-	int s_a;
-	int s_b;
 	int i;
 
-	s_a = stack_size(&app->a);
-	s_b = stack_size(&app->b);
 	move.distance_b = 0;
 	i = 0;
 	tmp = app->pre;
@@ -395,18 +188,18 @@ void	go_b(t_app *app)
 	if (tmp2)
 	{
 		tmp = (tmp->pre_next) ? tmp->pre_next : app->pre;
-		move.distance_a = (i <= s_a / 2) ? i : i - s_a;
+		move.distance_a = (i <= app->a.size / 2) ? i : i - app->a.size;
 	}
 	else
 		move.distance_a = 0;
-	tmp2 = app->b.first;
+		tmp2 = app->b.first;
 	i = 0;
 	while (tmp2 && tmp2->pre_nbr != tmp->pre_nbr)
 	{
 		tmp2 = tmp2->previous;
 		i++;
 	}
-		move.distance_b = (i <= s_b / 2) ? i : i - s_b;
+		move.distance_b = (i <= app->b.size / 2) ? i : i - app->b.size;
 	go(app, &move);
 }
 
@@ -415,9 +208,11 @@ void	boucle(t_app *app)
 {
 	int i;
 
+	if (app->nbr_nb == 1)
+		return ;
 	i = 0;
 	count_to_b(app);
-	while (stack_size(&app->b) < app->nbr_to_b)
+	while (app->b.size < app->nbr_to_b)
 	{
 		i++;
 		recup_dans_b(app);
@@ -428,7 +223,7 @@ void	boucle(t_app *app)
 		last_swap(app);
 		make_dec(app);
 	}
-	while (stack_size(&app->b) != 0)
+	while (app->b.size != 0)
 	{
 		go_b(app);
 		push(&app->a, &app->b);
@@ -445,17 +240,22 @@ void	manual_debug(t_app *app)
 	calc_stat(app);
 	need_swap(app);
 	make_dec(app);
+	make_costs(app);
 	boucle(app);
 	make_dec(app);
-	print_stacks_details(app);
-	//print_stacks(app);
+	make_costs(app);
+//	print_stacks_details(app);
+	print_stacks(app);
 	ft_printf("en %d commandes \n", app->nb_cmd);
 	return ;
 	while (1)
 	{
 		make_dec(app);
+	make_costs(app);
+		ft_printf("Moin cher - %d %d", app->low_cost->nbr, app->next_cmd);
 		print_stacks_details(app);
 		ft_bzero(tmp, 20);
+	ft_printf("%d\n", app->nb_cmd);
 		read(0, tmp, 20);
 		system("clear");
 		if (manual_swap(app, tmp));

@@ -182,4 +182,10 @@ t_elem					*next(t_app *app, t_elem *elem);
 t_elem					*previous(t_app *app, t_elem *elem);
 t_elem					*pre_previous(t_app *app, t_elem *elem);
 t_elem					*pre_next(t_app *app, t_elem *elem);
+
+// make_cost.c
+void					make_costs(t_app *app);
+
+// go.c
+void					go(t_app *app, t_elem *elem);
 #endif

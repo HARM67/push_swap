@@ -6,7 +6,7 @@
 /*   By: mfroehly <mfroehly@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 16:05:00 by mfroehly          #+#    #+#             */
-/*   Updated: 2016/01/12 16:06:08 by mfroehly         ###   ########.fr       */
+/*   Updated: 2016/01/12 19:39:02 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,11 @@ static void	make_gains(t_app *app)
 
 void	calc_stat(t_app *app)
 {
+	if (app->nbr_nb == 1)
+	{
+		app->pre->dec = 1;
+		return ;
+	}
 	zones_size(app);
 	select_zone(app);
 	calculate_gene(app);

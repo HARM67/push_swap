@@ -24,6 +24,8 @@ int		control(t_app *app)
 	int rt;
 
 	i = app->nbr_nb;
+	if (i == 1)
+		return (1);
 	rt = 0;
 	p = app->a.last;
 	while (p)
@@ -33,24 +35,7 @@ int		control(t_app *app)
 	}
 	if (i == rt)
 		return ((app->a.last->pre_nbr == i) ? 1 : 2);
-/*	while (p)
-	{
-		if (i != p->pre_nbr)
-			return (0);
-		p = p->next;
-		i--;
-	}
-	i = 1;
-	p = app->b.last;
-	while (p)
-	{
-		rt = 2;
-		if (i != p->pre_nbr)
-			return (0);
-		p = p->next;
-		i++;
-	}
-*/	return (0);
+	return (0);
 }
 
 void	resolve2(t_app *app)

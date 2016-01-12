@@ -5,7 +5,7 @@ LIB=./
 SRCS=main.c error.c app.c stack.c list.c command.c manual.c pre_resolve.c \
 	resolve.c resolve2.c util.c get_next_line.c file.c ft_atoi_8.c \
 	ft_strtest.c list2.c manual_debug.c statistic.c table.c block.c \
-	zone.c calc_stat.c print_stack.c need_swap.c nav.c
+	zone.c calc_stat.c print_stack.c need_swap.c nav.c makecost.c go.c
 SRC_PATH=./srcs/
 OBJ=$(SRCS:.c=.o)
 FLAG= -g
