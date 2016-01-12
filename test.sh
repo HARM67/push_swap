@@ -12,15 +12,15 @@
 #./push_swap `ruby -e "puts (-5000..5000).to_a.shuffle.join(' ')"` -md -c -h
 #./push_swap 5 6 4 3 2 1 -md -c -h
 
-./push_swap `ruby -e "puts (-500..500).to_a.shuffle.join(' ')"` -md -c -h
-./push_swap `ruby -e "puts (-100..100).to_a.shuffle.join(' ')"` -md -c -h
-./push_swap `ruby -e "puts (-10..10).to_a.shuffle.join(' ')"` -md -c -h
-./push_swap `ruby -e "puts (-10..10).to_a.shuffle.join(' ')"` -md -c -h
-./push_swap `ruby -e "puts (-5..5).to_a.shuffle.join(' ')"` -md -c -h
-./push_swap `ruby -e "puts (-5..5).to_a.shuffle.join(' ')"` -md -c -h
-./push_swap `ruby -e "puts (-2..2).to_a.shuffle.join(' ')"` -md -c -h
-./push_swap `ruby -e "puts (-2..1).to_a.shuffle.join(' ')"` -md -c -h
-./push_swap 5 6 4 3 2 1 -md -c -h
-./push_swap `ruby -e "puts (-1..1).to_a.shuffle.join(' ')"` -md -c -h
-./push_swap `ruby -e "puts (0..1).to_a.shuffle.join(' ')"` -md -c -h
-./push_swap `ruby -e "puts (1..1).to_a.shuffle.join(' ')"` -md -c -h
+./push_swap `ruby -e "puts (-500..500).to_a.shuffle.join(' ')"` -c -h
+./push_swap `ruby -e "puts (-100..100).to_a.shuffle.join(' ')"` -c -h
+./push_swap `ruby -e "puts (-10..10).to_a.shuffle.join(' ')"` -c -h
+./push_swap `ruby -e "puts (-10..10).to_a.shuffle.join(' ')"` -c -h
+./push_swap `ruby -e "puts (-5..5).to_a.shuffle.join(' ')"` -c -h
+./push_swap `ruby -e "puts (-5..5).to_a.shuffle.join(' ')"` -c -h
+./push_swap `ruby -e "puts (-2..2).to_a.shuffle.join(' ')"` -c -h
+./push_swap `ruby -e "puts (-2..1).to_a.shuffle.join(' ')"` -c -h
+./push_swap 5 6 4 3 2 1 -c -h
+./push_swap `ruby -e "puts (-1..1).to_a.shuffle.join(' ')"` -c -h
+./push_swap `ruby -e "puts (0..1).to_a.shuffle.join(' ')"`  -c -h
+./push_swap `ruby -e "puts (1..1).to_a.shuffle.join(' ')"` -c -h

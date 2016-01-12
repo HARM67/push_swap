@@ -21,7 +21,7 @@ void	run_app(t_app *app)
 	else if (app->manual)
 		manual(app);
 	else
-		resolve(app);
+		resolution(app);
 }
 
 void	free_app(t_app **app)

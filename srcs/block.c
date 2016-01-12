@@ -1,5 +1,5 @@
 #include "push_swap.h"
-
+/*
 void	identify_block(t_app *app)
 {
 	int i;
@@ -23,4 +23,4 @@ void	identify_block(t_app *app)
 		tmp = tmp->pre_next;
 		j++;
 	}
-}
+}*/

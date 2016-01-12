@@ -188,4 +188,21 @@ void					make_costs(t_app *app);
 
 // go.c
 void					go(t_app *app, t_elem *elem);
+
+// come_to_start.c
+void					come_to_start(t_app *app);
+
+//
+void					go_b(t_app *app);
+
+void					resolution(t_app *app);
+
+// for_resolution
+void					make_dec(t_app *app);
+void					count_to_b(t_app *app);
+void					last_swap(t_app *app);
+void					recup_dans_b(t_app *app);
+
+// resolution.c
+void					resolution(t_app *app);
 #endif
