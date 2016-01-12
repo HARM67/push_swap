@@ -6,7 +6,7 @@
 /*   By: mfroehly <mfroehly@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 19:04:24 by mfroehly          #+#    #+#             */
-/*   Updated: 2016/01/12 19:09:03 by mfroehly         ###   ########.fr       */
+/*   Updated: 2016/01/12 20:06:47 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,21 @@ static void	make_cost(t_elem *elem)
 		elem->cost = ABS(elem->distance_a) + ABS( elem->distance_b);
 }
 
-static void	normalize_cost(t_app *app, t_elem *elem)
+void	routine(t_app *app, t_elem *tmp, int *low)
 {
-	if (elem->distance_a > app->a.size / 2)
-		elem->distance_a -= app->a.size;
+	if (tmp->cost < *low && tmp->need_swap && previous(app, tmp)->need_swap == 2)
+	{
+		*low = tmp->cost;
+		app->low_cost = tmp;
+		tmp->distance_b = 0;
+		app->next_cmd = 1;
+	}
+	else if (tmp->cost < *low && tmp->move_b && tmp->need_swap == 0)
+	{
+		*low = tmp->cost;
+		app->low_cost = tmp;
+		app->next_cmd = 2;
+	}
 }
 
 void	make_costs(t_app *app)
@@ -85,23 +96,10 @@ void	make_costs(t_app *app)
 	}
 	while (i < size && i < low)
 	{
-			tmp->distance_a = i;
+			tmp->distance_a = (i > app->a.size / 2) ? i - app->a.size: i;
 			tmp->distance_b = dest_b(app, tmp);
-			normalize_cost(app, tmp);
 			make_cost(tmp);
-			if (tmp->cost < low && tmp->need_swap && previous(app, tmp)->need_swap == 2)
-			{
-				low = tmp->cost;
-				app->low_cost = tmp;
-				tmp->distance_b = 0;
-				app->next_cmd = 1;
-			}
-			else if (tmp->cost < low && tmp->move_b && tmp->need_swap == 0)
-			{
-				low = tmp->cost;
-				app->low_cost = tmp;
-				app->next_cmd = 2;
-			}
+		routine(app, tmp, &low);
 		tmp = previous(app, tmp);
 		i++;
 	}
