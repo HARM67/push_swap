@@ -17,9 +17,8 @@ void	swap(t_stack *stack)
 	stack->first->need_swap = 0;
 	stack->second->need_swap = 0;
 	tmp = stack->first->move_b;
-	stack->first->move_b = stack->second->move_b = tmp;
+	stack->first->move_b = stack->second->move_b;
 	stack->second->move_b = tmp;
-
 	stack->first->change =1;
 	stack->second->change =1;
 }

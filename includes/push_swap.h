@@ -20,6 +20,7 @@ struct					s_elem
 	t_elem				*next;
 	t_elem				*previous;
 	t_elem				*pre_next;
+	t_elem				*pre_previous;
 	char				change;
 	unsigned int		read_nbr;
 	unsigned int		dec;
@@ -29,10 +30,8 @@ struct					s_elem
 	unsigned int		block_nbr;
 	unsigned int		generation;
 	unsigned int		zone_size;
-	unsigned int		gap;
-	char				need_swap;
-	char				need_swap_b;
-	char				move_b;
+	unsigned int		need_swap;
+	unsigned int		move_b;
 	int					distance_a;
 	int					distance_b;
 	unsigned int		cost;
@@ -76,6 +75,7 @@ struct					s_app
 	t_stack				a;
 	t_stack				b;
 	t_elem				*pre;
+	t_elem				*pre_last;
 	t_elem				*zone_select;
 	t_comm				*resolution;
 	t_comm				*last_resol;
@@ -90,10 +90,9 @@ struct					s_app
 	int					temoin;
 	t_table				statistic;
 	unsigned int		gene_nb;
-	unsigned int		*swap_comb;
 	unsigned int		best;
 	unsigned int		nbr_to_b;
-	int		b_dest;
+	int					b_dest;
 	unsigned int		nb_cmd;
 	t_elem				*low_cost;
 	unsigned int		next_cmd;
@@ -164,4 +163,23 @@ void					fill_table(t_app *app);
 void					set_stack_numbers(t_app *app);
 int						for_block(int nb, t_app *app);
 void					identify_block(t_app *app);
+
+// zone.c
+void					zones_size(t_app *app);
+void					select_zone(t_app *app);
+
+// calc_stat.c
+void					calc_stat(t_app *app);
+
+// print_stack.c
+void					print_stacks_details(t_app *app);
+
+// need_push.c
+int						need_swap(t_app *app);
+
+// nav.c
+t_elem					*next(t_app *app, t_elem *elem);
+t_elem					*previous(t_app *app, t_elem *elem);
+t_elem					*pre_previous(t_app *app, t_elem *elem);
+t_elem					*pre_next(t_app *app, t_elem *elem);
 #endif
