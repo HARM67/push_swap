@@ -47,7 +47,10 @@ static void	boucle(t_app *app)
 	come_to_start(app);
 	make_dec(app);
 	if (app->debug)
+	{
 		print_stacks(app);
+		ft_printf("fait en %d commande(s)\n", app->nb_cmd);
+	}
 }
 
 void	resolution(t_app *app)

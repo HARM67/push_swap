@@ -8,22 +8,3 @@ void	init_stack(t_app *app)
 	app->b.stack_nbr = 1;
 	read_arg(app);
 }
-
-void	free_stack(t_app *app)
-{
-	t_elem *p;
-
-	while (app->a.last)
-	{
-		p = app->a.last->next;
-		free(app->a.last->next);
-		app->a.last = p;
-	}
-	while (app->b.last)
-	{
-		p = app->b.last->next;
-		free(app->b.last->next);
-		app->b.last = p;
-	}
-}
-

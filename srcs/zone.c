@@ -14,8 +14,8 @@
 
 static void	zone_size(t_app *app, t_elem *tmp)
 {
-	int i;
-	int j;
+	unsigned int i;
+	unsigned int j;
 	t_elem *tmp2;
 
 	tmp2 = tmp;

@@ -14,7 +14,7 @@
 
 static void	go_b2(t_app *app, t_elem *tmp, t_elem *tmp2, t_elem *move)
 {
-	int i;
+	unsigned int i;
 
 	i = 0;
 	while (tmp2 && tmp2->pre_nbr != tmp->pre_nbr)

@@ -22,12 +22,7 @@ void	run_app(t_app *app)
 		manual(app);
 	else
 		resolution(app);
-	print_commands(app);
+	if (!app->manual_debug || app->manual || app->file)
+		print_commands(app);
 }
 
-void	free_app(t_app **app)
-{
-	free_stack(*app);
-	if (*app)
-		free(*app);
-}

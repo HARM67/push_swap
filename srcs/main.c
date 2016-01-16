@@ -9,6 +9,5 @@ int main(int ac, char **av)
 	app = 0;
 	init_app(&app, ac, av);
 	run_app(app);
-	free_app(&app);
 	return (0);
 }

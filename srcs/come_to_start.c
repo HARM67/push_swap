@@ -55,7 +55,7 @@ void	come_to_start(t_app *app)
 {
 	t_elem move;
 	t_elem *tmp;
-	int i;
+	unsigned int i;
 
 	tmp = app->a.first;
 	i = 0;

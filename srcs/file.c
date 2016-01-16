@@ -5,6 +5,7 @@ void	from_file_command(t_app *app, char **file, int *print, int *coup)
 	int rt;
 
 	rt = 0;
+	print = 0;
 	if ((rt = manual_swap(app, *file)))
 		(*coup)++;
 	else if ((rt = manual_push(app, *file)))

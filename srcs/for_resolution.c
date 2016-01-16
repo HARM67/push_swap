@@ -26,7 +26,7 @@ void	make_dec(t_app *app)
 		else
 			tmp2 = app->a.last;
 		i = tmp->pre_nbr - tmp2->pre_nbr;
-		i = (i >= 0) ? i : i + app->nbr_nb;
+		i = (i >= 0) ? i : i + (int)app->nbr_nb;
 		if (tmp->next)
 			tmp->next->dec = i;
 		else

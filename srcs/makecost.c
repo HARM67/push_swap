@@ -31,10 +31,10 @@ static int	good_in_b(t_app *app, t_elem *elem, t_elem *position)
 }
 
 
-static int		dest_b(t_app *app, t_elem *tmp)
+static unsigned int		dest_b(t_app *app, t_elem *tmp)
 {
 	t_elem *tmp2;
-	int dest;
+	unsigned int dest;
 
 	dest = 0;
 	tmp2 = app->b.last;
@@ -60,7 +60,7 @@ static void	make_cost(t_elem *elem)
 		elem->cost = ABS(elem->distance_a) + ABS( elem->distance_b);
 }
 
-void	routine(t_app *app, t_elem *tmp, int *low)
+void	routine(t_app *app, t_elem *tmp, unsigned int *low)
 {
 	if (tmp->cost < *low && tmp->need_swap && previous(app, tmp)->need_swap == 2)
 	{
@@ -79,10 +79,10 @@ void	routine(t_app *app, t_elem *tmp, int *low)
 
 void	make_costs(t_app *app)
 {
-	int i;
+	unsigned int i;
 	t_elem *tmp;
-	int size;
-	int low;
+	unsigned int size;
+	unsigned int low;
 
 	size = app->a.size;
 	low = 2147483647;
