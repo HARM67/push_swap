@@ -22,6 +22,7 @@ void	run_app(t_app *app)
 		manual(app);
 	else
 		resolution(app);
+	print_commands(app);
 }
 
 void	free_app(t_app **app)

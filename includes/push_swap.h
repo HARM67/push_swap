@@ -6,6 +6,17 @@
 # define ABS(x) ((x > 0) ? x : -x)
 # define MAX_BLOCK 0.3
 # define ANALYZE 10
+# define RA 1
+# define RB 2
+# define RR 3
+# define RRA 4
+# define RRB 5
+# define RRR 6
+# define SA 7
+# define SB 8
+# define SS 9
+# define PA 10
+# define PB 11
 
 typedef struct s_table	t_table;
 typedef struct s_comm	t_comm;
@@ -62,7 +73,7 @@ struct					s_stack
 
 struct					s_comm
 {
-	unsigned int		command;
+	unsigned char		command;
 	t_comm				*previous;
 	t_comm				*next;
 };
@@ -79,6 +90,8 @@ struct					s_app
 	t_elem				*zone_select;
 	t_comm				*resolution;
 	t_comm				*last_resol;
+	t_comm				*cursor;
+	char				out;
 	int					tmp;
 	char				color;
 	char				debug;
@@ -94,6 +107,8 @@ struct					s_app
 	unsigned int		nbr_to_b;
 	int					b_dest;
 	unsigned int		nb_cmd;
+	unsigned int		nb_cmd2;
+	unsigned int		nb_cmd_tab[12];
 	t_elem				*low_cost;
 	unsigned int		next_cmd;
 };
@@ -205,4 +220,12 @@ void					recup_dans_b(t_app *app);
 
 // resolution.c
 void					resolution(t_app *app);
+
+// command.c
+void					insert_command(t_app *app, unsigned char command);
+void					print_commands(t_app *app);
+
+// do_command.c
+void					do_command(t_app *app, unsigned char command);
+void					do_reverse_command(t_app *app, unsigned char command);
 #endif

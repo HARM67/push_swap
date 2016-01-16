@@ -42,6 +42,7 @@ void	from_file(t_app *app)
 		if (app->debug && print)
 			print_stacks(app);
 	}
+	make_dec(app);
 	if (app->debug == 0)
 		print_stacks(app);
 	if (app->result)

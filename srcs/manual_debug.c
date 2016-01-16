@@ -12,31 +12,35 @@
 
 #include "push_swap.h"
 
-/*
-void	insert_command(t_app *app, unsigned int command)
+void	prev(t_app *app)
 {
-	t_comm *comm;
-
-	comm = (t_comm*)ft_memalloc(sizeof(t_comm));
-	if (!app->resolution)
+	if (app->out != 1)
 	{
-		app->resolution = comm;
-		app->last_resol = comm;
+		do_reverse_command(app, app->cursor->command);
+		if (app->cursor->previous)
+			app->cursor = app->cursor->previous;
+		else
+			app->out = 1;
 	}
-	else if (app->last_resol)
-		app->last_resol->next = comm;
 }
-*/
+
+static void	nex(t_app *app)
+{
+	if (app->cursor->next)
+	{
+		if (app->out != 1)
+			app->cursor = app->cursor->next;
+		app->out = 0;
+		do_command(app, app->cursor->command);
+	}
+}
 
 void	manual_debug(t_app *app)
 {
 	char	tmp[20];
 
-	make_dec(app);
-	calc_stat(app);
-	need_swap(app);
-	make_dec(app);
-	make_costs(app);
+	resolution(app);
+	app->cursor = app->last_resol;
 	while (1)
 	{
 		make_dec(app);
@@ -44,19 +48,10 @@ void	manual_debug(t_app *app)
 		print_stacks_details(app);
 		ft_bzero(tmp, 20);
 		read(0, tmp, 20);
-		system("clear");
-		if (manual_swap(app, tmp));
-		else if (manual_push(app, tmp));
-		else if (manual_reverse_rotate(app, tmp));
-		else if (manual_rotate(app, tmp));
-		else if (ft_memcmp(tmp, "g", 1) == 0)
-			go_b(app);
-		else if (ft_memcmp(tmp, "s", 1) == 0)
-			last_swap(app);
-		else if (ft_memcmp(tmp, "c", 1) == 0)
-			come_to_start(app);
-		else if (ft_memcmp(tmp, "n", 1) == 0)
-			recup_dans_b(app);
+		if (ft_memcmp(tmp, "p", 1) == 0)
+			prev(app);
+		else if (ft_memcmp(tmp, "next", 4) == 0 || ft_memcmp(tmp, "n", 1) == 0)
+			nex(app);
 		else if (ft_memcmp(tmp, "exit", 4) == 0)
 			break ;
 	}

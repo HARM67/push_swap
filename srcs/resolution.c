@@ -24,20 +24,30 @@ static void	boucle(t_app *app)
 	{
 		i++;
 		recup_dans_b(app);
+		if (app->debug)
+			print_stacks(app);
 	}
 	make_dec(app);
 	while (control(app) == 0)
 	{
 		last_swap(app);
 		make_dec(app);
+		if (app->debug)
+			print_stacks(app);
 	}
 	while (app->b.size != 0)
 	{
 		go_b(app);
+		insert_command(app, PA);
 		push(&app->a, &app->b);
+		if (app->debug)
+			print_stacks(app);
 		app->nb_cmd++;
 	}
 	come_to_start(app);
+	make_dec(app);
+	if (app->debug)
+		print_stacks(app);
 }
 
 void	resolution(t_app *app)
@@ -49,6 +59,4 @@ void	resolution(t_app *app)
 	make_costs(app);
 	boucle(app);
 	make_dec(app);
-	print_stacks(app);
-	ft_printf("en %d commandes \n", app->nb_cmd);
 }

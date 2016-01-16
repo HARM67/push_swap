@@ -22,16 +22,19 @@ void	go_reverse(t_app *app, t_elem *elem)
 			reverse_rotate(&app->b);
 			elem->distance_a++;
 			elem->distance_b++;
+			insert_command(app, RRR);
 			app->nb_cmd++;
 		}
 		else if (elem->distance_a < 0)
 		{
+			insert_command(app, RRA);
 			reverse_rotate(&app->a);
 			elem->distance_a++;
 			app->nb_cmd++;
 		}
 		else if (elem->distance_b < 0)
 		{
+			insert_command(app, RRB);
 			reverse_rotate(&app->b);
 			elem->distance_b++;
 			app->nb_cmd++;
@@ -45,6 +48,7 @@ void		go(t_app *app, t_elem *elem)
 	{
 		if (elem->distance_b > 0 && elem->distance_a > 0)
 		{
+			insert_command(app, RR);
 			rotate(&app->a);
 			rotate(&app->b);
 			elem->distance_a--;
@@ -53,12 +57,14 @@ void		go(t_app *app, t_elem *elem)
 		}
 		else if (elem->distance_a > 0)
 		{
+			insert_command(app, RA);
 			rotate(&app->a);
 			elem->distance_a--;
 			app->nb_cmd++;
 		}
 		else if (elem->distance_b > 0)
 		{
+			insert_command(app, RB);
 			rotate(&app->b);
 			elem->distance_b--;
 			app->nb_cmd++;

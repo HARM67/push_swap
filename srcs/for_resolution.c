@@ -61,8 +61,9 @@ void	last_swap(t_app *app)
 	go(app, tmp);
 	if (app->next_cmd == 1)
 	{
+		insert_command(app, SA);
 		swap(&app->a);
-	app->nb_cmd++;
+		app->nb_cmd++;
 		return;
 	}
 }
@@ -77,15 +78,15 @@ void	recup_dans_b(t_app *app)
 	go(app, tmp);
 	if (app->next_cmd == 1)
 	{
-	//	ft_printf("sa ");
+		insert_command(app, SA);
 		swap(&app->a);
 		app->nb_cmd++;
 		return;
 	}
 	else if (app->next_cmd == 2)
 	{
-	//	ft_printf("pb ");
+		insert_command(app, PB);
 		push(&app->b, &app->a);
-	app->nb_cmd++;
+		app->nb_cmd++;
 	}
 }

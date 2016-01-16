@@ -21,7 +21,6 @@ void	swap(t_stack *stack)
 	stack->second->move_b = tmp;
 	stack->first->change =1;
 	stack->second->change =1;
-	//ft_printf("s%c\n", stack->stack_nbr + 'a');
 }
 
 void	push(t_stack *dest, t_stack *src)
@@ -50,7 +49,6 @@ void	push(t_stack *dest, t_stack *src)
 
 	(dest->size)++;
 	dest->first->change = 1;
-	//ft_printf("p%c\n", dest->stack_nbr + 'a');
 }
 
 void	all_highlight(t_stack *stack)
@@ -76,7 +74,6 @@ void	rotate(t_stack *stack)
 	stack->first = stack->second;
 	conform_stack(stack);
 	all_highlight(stack);
-	//ft_printf("r%c\n", stack->stack_nbr + 'a');
 }
 
 void reverse_rotate(t_stack *stack)
@@ -89,5 +86,4 @@ void reverse_rotate(t_stack *stack)
 	stack->last->next = 0;
 	conform_stack(stack);
 	all_highlight(stack);
-	//ft_printf("rr%c\n", stack->stack_nbr + 'a');
 }
