@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   manual.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mfroehly <mfroehly@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/01/17 08:04:58 by mfroehly          #+#    #+#             */
+/*   Updated: 2016/01/17 09:26:29 by mfroehly         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int		manual_swap(t_app *app, char *tmp)
@@ -77,13 +89,18 @@ void	manual(t_app *app)
 
 	while (1)
 	{
+		make_dec(app);
 		print_stacks(app);
 		ft_bzero(tmp, 5);
 		read(0, tmp, 5);
-		if (manual_swap(app, tmp));
-		else if (manual_push(app, tmp));
-		else if (manual_reverse_rotate(app, tmp));
-		else if (manual_rotate(app, tmp));
+		if (manual_swap(app, tmp))
+			;
+		else if (manual_push(app, tmp))
+			;
+		else if (manual_reverse_rotate(app, tmp))
+			;
+		else if (manual_rotate(app, tmp))
+			;
 		else if (ft_memcmp(tmp, "exit", 4) == 0)
 			break ;
 	}

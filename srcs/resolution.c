@@ -6,11 +6,31 @@
 /*   By: mfroehly <mfroehly@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 20:39:51 by mfroehly          #+#    #+#             */
-/*   Updated: 2016/01/12 20:41:28 by mfroehly         ###   ########.fr       */
+/*   Updated: 2016/01/17 08:01:24 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	boucle2(t_app *app)
+{
+	while (app->b.size != 0)
+	{
+		go_b(app);
+		insert_command(app, PA);
+		push(&app->a, &app->b);
+		if (app->debug)
+			print_stacks(app);
+		app->nb_cmd++;
+	}
+	come_to_start(app);
+	make_dec(app);
+	if (app->debug)
+	{
+		print_stacks(app);
+		ft_printf("fait en %d commande(s)\n", app->nb_cmd);
+	}
+}
 
 static void	boucle(t_app *app)
 {
@@ -35,25 +55,10 @@ static void	boucle(t_app *app)
 		if (app->debug)
 			print_stacks(app);
 	}
-	while (app->b.size != 0)
-	{
-		go_b(app);
-		insert_command(app, PA);
-		push(&app->a, &app->b);
-		if (app->debug)
-			print_stacks(app);
-		app->nb_cmd++;
-	}
-	come_to_start(app);
-	make_dec(app);
-	if (app->debug)
-	{
-		print_stacks(app);
-		ft_printf("fait en %d commande(s)\n", app->nb_cmd);
-	}
+	boucle2(app);
 }
 
-void	resolution(t_app *app)
+void		resolution(t_app *app)
 {
 	make_dec(app);
 	calc_stat(app);

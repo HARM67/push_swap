@@ -6,13 +6,12 @@
 /*   By: mfroehly <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 22:08:19 by mfroehly          #+#    #+#             */
-/*   Updated: 2016/01/08 02:43:49 by mfroehly         ###   ########.fr       */
+/*   Updated: 2016/01/17 07:37:32 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-# define BUFF_SIZE 4096
 # include "libft.h"
 # include <unistd.h>
 # include <stdarg.h>

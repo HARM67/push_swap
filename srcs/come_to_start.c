@@ -6,7 +6,7 @@
 /*   By: mfroehly <mfroehly@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 20:10:05 by mfroehly          #+#    #+#             */
-/*   Updated: 2016/01/12 20:12:10 by mfroehly         ###   ########.fr       */
+/*   Updated: 2016/01/17 08:25:20 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 t_elem	*min_stack(t_stack *stack)
 {
-	int i;
-	t_elem *rt;
-	t_elem *tmp;
+	int		i;
+	t_elem	*rt;
+	t_elem	*tmp;
 
 	i = 2147483647;
 	tmp = stack->first;
@@ -34,9 +34,9 @@ t_elem	*min_stack(t_stack *stack)
 
 t_elem	*max_stack(t_stack *stack)
 {
-	int i;
-	t_elem *rt;
-	t_elem *tmp;
+	int		i;
+	t_elem	*rt;
+	t_elem	*tmp;
 
 	i = 0;
 	tmp = stack->first;
@@ -51,15 +51,16 @@ t_elem	*max_stack(t_stack *stack)
 	}
 	return (rt);
 }
+
 void	come_to_start(t_app *app)
 {
-	t_elem move;
-	t_elem *tmp;
-	unsigned int i;
+	t_elem			move;
+	t_elem			*tmp;
+	unsigned int	i;
 
 	tmp = app->a.first;
 	i = 0;
-	while (tmp->pre_nbr !=  min_stack(&app->a)->pre_nbr)
+	while (tmp->pre_nbr != min_stack(&app->a)->pre_nbr)
 	{
 		i++;
 		tmp = tmp->previous;
@@ -70,7 +71,7 @@ void	come_to_start(t_app *app)
 	if (app->b.first)
 	{
 		tmp = app->b.first;
-		while (tmp->pre_nbr !=  max_stack(&app->b)->pre_nbr)
+		while (tmp->pre_nbr != max_stack(&app->b)->pre_nbr)
 		{
 			i++;
 			tmp = tmp->previous;

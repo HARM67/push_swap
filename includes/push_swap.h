@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mfroehly <mfroehly@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/01/17 07:25:39 by mfroehly          #+#    #+#             */
+/*   Updated: 2016/01/17 07:27:02 by mfroehly         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include <stdlib.h>
@@ -64,7 +76,7 @@ struct					s_comm
 
 struct					s_app
 {
-	unsigned int					ac;
+	unsigned int		ac;
 	char				**av;
 	unsigned int		nbr_nb;
 	t_stack				a;
@@ -111,7 +123,7 @@ void					conform_stack(t_stack *stack);
 void					swap(t_stack *stack);
 void					push(t_stack *dest, t_stack *src);
 void					rotate(t_stack *stack);
-void 					reverse_rotate(t_stack *stack);
+void					reverse_rotate(t_stack *stack);
 
 int						manual_reverse_rotate(t_app *app, char *tmp);
 int						manual_rotate(t_app *app, char *tmp);
@@ -133,57 +145,81 @@ long int				ft_atoi_8(const char *str);
 int						ft_strtest(char *str, int (*f)(int));
 int						control_arg(char *str);
 
-void					read_elem(t_app *app, int i,unsigned int nbr_nb);
+void					read_elem(t_app *app, int i, unsigned int nbr_nb);
 
 void					manual_debug(t_app *app);
 void					set_stack_numbers(t_app *app);
 
-// zone.c
+/*
+** zone.c
+*/
 void					zones_size(t_app *app);
 void					select_zone(t_app *app);
 
-// calc_stat.c
+/*
+** calc_stat.c
+*/
 void					calc_stat(t_app *app);
 
-// print_stack.c
+/*
+** print_stack.c
+*/
 void					print_stacks_details(t_app *app);
 
-// need_push.c
+/*
+** need_push.c
+*/
 int						need_swap(t_app *app);
 
-// nav.c
+/*
+** nav.c
+*/
 t_elem					*next(t_app *app, t_elem *elem);
 t_elem					*previous(t_app *app, t_elem *elem);
 t_elem					*pre_previous(t_app *app, t_elem *elem);
 t_elem					*pre_next(t_app *app, t_elem *elem);
 
-// make_cost.c
+/*
+** make_cost.c
+*/
 void					make_costs(t_app *app);
 
-// go.c
+/*
+** go.c
+*/
 void					go(t_app *app, t_elem *elem);
 
-// come_to_start.c
+/*
+** come_to_start.c
+*/
 void					come_to_start(t_app *app);
 
 void					go_b(t_app *app);
 
 void					resolution(t_app *app);
 
-// for_resolution
+/*
+** for_resolution
+*/
 void					make_dec(t_app *app);
 void					count_to_b(t_app *app);
 void					last_swap(t_app *app);
 void					recup_dans_b(t_app *app);
 
-// resolution.c
+/*
+** resolution.c
+*/
 void					resolution(t_app *app);
 
-// command.c
+/*
+** command.c
+*/
 void					insert_command(t_app *app, unsigned char command);
 void					print_commands(t_app *app);
 
-// do_command.c
+/*
+** do_command.c
+*/
 void					do_command(t_app *app, unsigned char command);
 void					do_reverse_command(t_app *app, unsigned char command);
 #endif

@@ -1,14 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   command.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mfroehly <mfroehly@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/01/17 08:23:53 by mfroehly          #+#    #+#             */
+/*   Updated: 2016/01/17 08:23:54 by mfroehly         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	swap(t_stack *stack)
 {
 	int tmp;
 
-	if (stack->first == 0 || stack->first->previous == 0 )
+	if (stack->first == 0 || stack->first->previous == 0)
 		return ;
 	stack->first->previous = stack->second->previous;
 	stack->second->previous = stack->first;
-
 	stack->first->next = stack->second;
 	stack->second->next = 0;
 	if (stack->first->previous)
@@ -19,8 +30,8 @@ void	swap(t_stack *stack)
 	tmp = stack->first->move_b;
 	stack->first->move_b = stack->second->move_b;
 	stack->second->move_b = tmp;
-	stack->first->change =1;
-	stack->second->change =1;
+	stack->first->change = 1;
+	stack->second->change = 1;
 }
 
 void	push(t_stack *dest, t_stack *src)
@@ -29,7 +40,7 @@ void	push(t_stack *dest, t_stack *src)
 
 	tmp = src->first;
 	if (src->first == 0)
-		return;
+		return ;
 	if (src->first->previous)
 	{
 		src->first = src->first->previous;
@@ -45,8 +56,7 @@ void	push(t_stack *dest, t_stack *src)
 	conform_stack(src);
 	conform_stack(dest);
 	if (src->size >= 1)
-	(src->size)--;
-
+		(src->size)--;
 	(dest->size)++;
 	dest->first->change = 1;
 }
@@ -59,7 +69,7 @@ void	all_highlight(t_stack *stack)
 	while (elem)
 	{
 		elem->change = 1;
-		elem= elem->next;
+		elem = elem->next;
 	}
 }
 
@@ -76,7 +86,7 @@ void	rotate(t_stack *stack)
 	all_highlight(stack);
 }
 
-void reverse_rotate(t_stack *stack)
+void	reverse_rotate(t_stack *stack)
 {
 	if (stack->first == 0 || stack->second == 0)
 		return ;

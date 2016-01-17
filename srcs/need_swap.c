@@ -6,7 +6,7 @@
 /*   By: mfroehly <mfroehly@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 16:08:35 by mfroehly          #+#    #+#             */
-/*   Updated: 2016/01/12 19:46:55 by mfroehly         ###   ########.fr       */
+/*   Updated: 2016/01/17 08:03:59 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,14 @@
 
 static void	try_swap(t_app *app, t_elem *tmp)
 {
-	t_elem *p;
-	t_elem *s;
-	int p_new;
-	int	a_new;
-	int s_new;
+	t_elem	*p;
+	t_elem	*s;
+	int		p_new;
+	int		a_new;
+	int		s_new;
 
 	p = (tmp->previous) ? tmp->previous : app->a.first;
 	s = (tmp->next) ? tmp->next : app->a.last;
-
 	a_new = app->nbr_nb - tmp->dec;
 	p_new = (p->dec + tmp->dec) % app->nbr_nb;
 	s_new = (s->dec + tmp->dec) % app->nbr_nb;
@@ -33,7 +32,7 @@ static void	try_swap(t_app *app, t_elem *tmp)
 
 static void	to_move_b(t_app *app)
 {
-	t_elem *tmp;
+	t_elem	*tmp;
 
 	tmp = app->a.last;
 	while (tmp)
@@ -49,9 +48,9 @@ static void	to_move_b(t_app *app)
 
 int			need_swap(t_app *app)
 {
-	t_elem *tmp;
-	t_elem *tmp2;
-	int i;
+	t_elem	*tmp;
+	t_elem	*tmp2;
+	int		i;
 
 	i = 0;
 	tmp2 = app->a.first;

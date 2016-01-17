@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   command_lst.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mfroehly <mfroehly@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/01/17 08:22:10 by mfroehly          #+#    #+#             */
+/*   Updated: 2016/01/17 08:22:11 by mfroehly         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void	insert_command(t_app *app, unsigned char command)
+void		insert_command(t_app *app, unsigned char command)
 {
 	t_comm	*comm;
 
 	comm = (t_comm*)ft_memalloc(sizeof(t_comm));
 	if (!comm)
-	exit (1);
+		exit(1);
 	comm->command = command;
 	if (!app->resolution)
 	{
@@ -22,6 +34,7 @@ void	insert_command(t_app *app, unsigned char command)
 	app->nb_cmd2++;
 	app->nb_cmd_tab[command]++;
 }
+
 static void	print_command(unsigned char command)
 {
 	if (command == RA)
@@ -48,7 +61,7 @@ static void	print_command(unsigned char command)
 		ft_putstr("pb");
 }
 
-void	print_commands(t_app *app)
+void		print_commands(t_app *app)
 {
 	t_comm	*comm;
 

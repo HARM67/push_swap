@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atoi_8.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfroehly <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mfroehly <mfroehly@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/23 18:33:50 by mfroehly          #+#    #+#             */
-/*   Updated: 2015/11/23 18:33:53 by mfroehly         ###   ########.fr       */
+/*   Created: 2016/01/17 08:14:56 by mfroehly          #+#    #+#             */
+/*   Updated: 2016/01/17 08:15:05 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 long int	ft_atoi_8(const char *str)
 {
-	long int number;
-	int signe;
+	long int	number;
+	int			signe;
 
 	number = 0;
 	signe = 1;

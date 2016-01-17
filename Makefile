@@ -1,5 +1,6 @@
 NAME = push_swap
 INCLUDES=./includes
+INCLUDES_FT_PRINTF=./ft_printf/includes
 COMPILER = gcc
 LIB=./ft_printf/
 SRCS=main.c error.c app.c stack.c list.c command.c manual.c pre_resolve.c \
@@ -10,29 +11,27 @@ SRCS=main.c error.c app.c stack.c list.c command.c manual.c pre_resolve.c \
 	do_command.c
 SRC_PATH=./srcs/
 OBJ=$(SRCS:.c=.o)
-FLAG= -Wall -Werror -Wextra
+FLAG=-Wall -Werror -Wextra
 
 all: $(NAME)
 
-$(NAME): lib $(OBJ) $(INCLUDES)/get_next_line.h $(INCLUDES)/push_swap.h \
-			$(INCLUDES)/push_swap.h
-	$(COMPILER) -o $(NAME) -I$(INCLUDES) $(OBJ) -L$(LIB) -lftprintf
-
-lib:
-	make -C $(LIB)
-
-lib_re:
-	make re -C $(LIB)
+$(NAME): $(LIB)libftprintf.a $(OBJ) $(INCLUDES)/get_next_line.h $(INCLUDES_FT_PRINTF)/ft_printf.h \
+	$(INCLUDES)/push_swap.h
+	$(COMPILER) -o $(NAME) -I$(INCLUDES_FT_PRINTF) -I$(INCLUDES) $(OBJ) -L$(LIB) -lftprintf
 
 %.o: $(SRC_PATH)%.c
-	$(COMPILER) -c $(FLAG) $< -I$(INCLUDES)
+	$(COMPILER) -c $(FLAG) $< -I$(INCLUDES_FT_PRINTF) -I$(INCLUDES)
 
-clean:
-	rm -f $(OBJ)
+$(LIB)libftprintf.a:
+	make -C $(LIB)
 	make clean -C $(LIB)
 
-fclean: clean
-	rm -f $(NAME)
-	make fclean -C $(LIB)
+clean:
+	make clean -C $(LIB)
+	rm -f $(OBJ)
 
-re: fclean lib_re $(NAME)
+fclean: clean
+	make fclean -C $(LIB)
+	rm -f $(NAME)
+
+re: fclean $(NAME)

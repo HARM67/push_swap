@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   file.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mfroehly <mfroehly@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/01/17 08:17:39 by mfroehly          #+#    #+#             */
+/*   Updated: 2016/01/17 08:18:57 by mfroehly         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void	from_file_command(t_app *app, char **file, int *print, int *coup)
+void		from_file_command(t_app *app, char **file, int *print, int *coup)
 {
 	int rt;
 
@@ -19,7 +31,14 @@ void	from_file_command(t_app *app, char **file, int *print, int *coup)
 	*file += rt;
 }
 
-void	from_file(t_app *app)
+static void	from_file2(t_app *app)
+{
+	make_dec(app);
+	if (app->debug == 0)
+		print_stacks(app);
+}
+
+void		from_file(t_app *app)
 {
 	char	*file;
 	int		print;
@@ -43,9 +62,7 @@ void	from_file(t_app *app)
 		if (app->debug && print)
 			print_stacks(app);
 	}
-	make_dec(app);
-	if (app->debug == 0)
-		print_stacks(app);
+	from_file2(app);
 	if (app->result)
 		ft_printf("Il a fallut %d coups\n\n", coup);
 }

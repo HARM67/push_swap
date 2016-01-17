@@ -6,7 +6,7 @@
 /*   By: mfroehly <mfroehly@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 20:19:10 by mfroehly          #+#    #+#             */
-/*   Updated: 2016/01/12 20:19:47 by mfroehly         ###   ########.fr       */
+/*   Updated: 2016/01/17 08:09:43 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	go_b2(t_app *app, t_elem *tmp, t_elem *tmp2, t_elem *move)
 	move->distance_b = (i <= app->b.size / 2) ? i : i - app->b.size;
 }
 
-void	go_b(t_app *app)
+void		go_b(t_app *app)
 {
 	t_elem *tmp;
 	t_elem *tmp2;
@@ -57,4 +57,3 @@ void	go_b(t_app *app)
 	go_b2(app, tmp, tmp2, &move);
 	go(app, &move);
 }
-

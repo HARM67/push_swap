@@ -6,7 +6,7 @@
 /*   By: mfroehly <mfroehly@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 16:01:17 by mfroehly          #+#    #+#             */
-/*   Updated: 2016/01/12 19:36:55 by mfroehly         ###   ########.fr       */
+/*   Updated: 2016/01/17 07:55:45 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static void	zone_size(t_app *app, t_elem *tmp)
 {
-	unsigned int i;
-	unsigned int j;
-	t_elem *tmp2;
+	unsigned int	i;
+	unsigned int	j;
+	t_elem			*tmp2;
 
 	tmp2 = tmp;
 	i = 0;
@@ -33,7 +33,7 @@ static void	zone_size(t_app *app, t_elem *tmp)
 
 void		zones_size(t_app *app)
 {
-	t_elem *tmp;
+	t_elem	*tmp;
 
 	tmp = app->a.last;
 	while (tmp)
@@ -43,19 +43,19 @@ void		zones_size(t_app *app)
 	}
 }
 
-void	select_zone(t_app *app)
+void		select_zone(t_app *app)
 {
 	t_elem	*tmp;
-	t_elem *tmp2;
-	int	zone;
+	t_elem	*tmp2;
+	int		zone;
 
 	zone = 0;
 	tmp = app->a.last;
 	tmp2 = tmp;
 	while (tmp)
 	{
-		if (tmp2->zone_size < tmp->zone_size ||(
-				tmp2->zone_size == tmp->zone_size &&
+		if (tmp2->zone_size < tmp->zone_size ||
+				(tmp2->zone_size == tmp->zone_size &&
 				tmp2->pre_nbr > tmp->pre_nbr))
 			tmp2 = tmp;
 		tmp = tmp->next;

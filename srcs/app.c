@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   app.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mfroehly <mfroehly@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/01/17 08:26:46 by mfroehly          #+#    #+#             */
+/*   Updated: 2016/01/17 10:52:35 by mfroehly         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	init_app(t_app **app, int ac, char **av)
@@ -25,4 +37,3 @@ void	run_app(t_app *app)
 	if (!app->manual_debug || app->manual || app->file)
 		print_commands(app);
 }
-

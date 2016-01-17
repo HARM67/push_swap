@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   list.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mfroehly <mfroehly@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/01/17 08:09:21 by mfroehly          #+#    #+#             */
+/*   Updated: 2016/01/17 08:09:22 by mfroehly         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	conform_stack(t_stack *stack)
@@ -70,7 +82,6 @@ void	read_arg(t_app *app)
 
 void	print_stacks(t_app *app)
 {
-
 	if (app->color)
 		ft_printf("{FG_BLUE}");
 	ft_printf("\n{BOLD}a :{EOC}");

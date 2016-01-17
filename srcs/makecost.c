@@ -6,13 +6,13 @@
 /*   By: mfroehly <mfroehly@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 19:04:24 by mfroehly          #+#    #+#             */
-/*   Updated: 2016/01/12 20:06:47 by mfroehly         ###   ########.fr       */
+/*   Updated: 2016/01/17 08:08:06 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	good_in_b(t_app *app, t_elem *elem, t_elem *position)
+static int			good_in_b(t_app *app, t_elem *elem, t_elem *position)
 {
 	t_elem *tmp;
 	t_elem *tmp2;
@@ -30,11 +30,10 @@ static int	good_in_b(t_app *app, t_elem *elem, t_elem *position)
 	return (0);
 }
 
-
-static unsigned int		dest_b(t_app *app, t_elem *tmp)
+static unsigned int	dest_b(t_app *app, t_elem *tmp)
 {
-	t_elem *tmp2;
-	unsigned int dest;
+	t_elem			*tmp2;
+	unsigned int	dest;
 
 	dest = 0;
 	tmp2 = app->b.last;
@@ -48,21 +47,22 @@ static unsigned int		dest_b(t_app *app, t_elem *tmp)
 	return (dest);
 }
 
-static void	make_cost(t_elem *elem)
+static void			make_cost(t_elem *elem)
 {
 	if (elem->distance_a > 0 && elem->distance_b > 0)
 		elem->cost = (elem->distance_a > elem->distance_b) ?
 			elem->distance_a : elem->distance_b;
 	else if (elem->distance_a < 0 && elem->distance_b < 0)
 		elem->cost = (elem->distance_a < elem->distance_b) ?
-			-elem->distance_a: -elem->distance_b;
+			-elem->distance_a : -elem->distance_b;
 	else
-		elem->cost = ABS(elem->distance_a) + ABS( elem->distance_b);
+		elem->cost = ABS(elem->distance_a) + ABS(elem->distance_b);
 }
 
-void	routine(t_app *app, t_elem *tmp, unsigned int *low)
+void				routine(t_app *app, t_elem *tmp, unsigned int *low)
 {
-	if (tmp->cost < *low && tmp->need_swap && previous(app, tmp)->need_swap == 2)
+	if (tmp->cost < *low && tmp->need_swap &&
+			previous(app, tmp)->need_swap == 2)
 	{
 		*low = tmp->cost;
 		app->low_cost = tmp;
@@ -77,12 +77,12 @@ void	routine(t_app *app, t_elem *tmp, unsigned int *low)
 	}
 }
 
-void	make_costs(t_app *app)
+void				make_costs(t_app *app)
 {
-	unsigned int i;
-	t_elem *tmp;
-	unsigned int size;
-	unsigned int low;
+	unsigned int	i;
+	t_elem			*tmp;
+	unsigned int	size;
+	unsigned int	low;
 
 	size = app->a.size;
 	low = 2147483647;
@@ -96,9 +96,9 @@ void	make_costs(t_app *app)
 	}
 	while (i < size && i < low)
 	{
-			tmp->distance_a = (i > app->a.size / 2) ? i - app->a.size: i;
-			tmp->distance_b = dest_b(app, tmp);
-			make_cost(tmp);
+		tmp->distance_a = (i > app->a.size / 2) ? i - app->a.size : i;
+		tmp->distance_b = dest_b(app, tmp);
+		make_cost(tmp);
 		routine(app, tmp, &low);
 		tmp = previous(app, tmp);
 		i++;

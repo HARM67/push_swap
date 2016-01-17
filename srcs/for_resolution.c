@@ -6,7 +6,7 @@
 /*   By: mfroehly <mfroehly@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 20:37:55 by mfroehly          #+#    #+#             */
-/*   Updated: 2016/01/12 20:38:19 by mfroehly         ###   ########.fr       */
+/*   Updated: 2016/01/17 08:15:52 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	make_dec(t_app *app)
 {
-	int i;
-	t_elem *tmp;
-	t_elem *tmp2;
+	int		i;
+	t_elem	*tmp;
+	t_elem	*tmp2;
 
 	tmp = app->a.last;
 	while (tmp)
@@ -37,8 +37,8 @@ void	make_dec(t_app *app)
 
 void	count_to_b(t_app *app)
 {
-	t_elem *tmp;
-	int i;
+	t_elem	*tmp;
+	int		i;
 
 	i = 0;
 	tmp = app->a.last;
@@ -64,7 +64,7 @@ void	last_swap(t_app *app)
 		insert_command(app, SA);
 		swap(&app->a);
 		app->nb_cmd++;
-		return;
+		return ;
 	}
 }
 
@@ -81,7 +81,7 @@ void	recup_dans_b(t_app *app)
 		insert_command(app, SA);
 		swap(&app->a);
 		app->nb_cmd++;
-		return;
+		return ;
 	}
 	else if (app->next_cmd == 2)
 	{

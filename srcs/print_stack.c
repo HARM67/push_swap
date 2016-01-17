@@ -6,7 +6,7 @@
 /*   By: mfroehly <mfroehly@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 16:07:19 by mfroehly          #+#    #+#             */
-/*   Updated: 2016/01/12 16:08:13 by mfroehly         ###   ########.fr       */
+/*   Updated: 2016/01/17 08:02:08 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ static	void	select_color(t_app *app)
 		ft_printf("{FG_GREEN}{DARK}");
 	else if (control(app) == 2)
 		ft_printf("{FG_YELLOW}");
-	else 
+	else
 		ft_printf("{FG_RED}");
 }
 
 static	void	print_stack_details(t_stack *stack, t_app *app)
 {
-	t_elem *tmp;
+	t_elem	*tmp;
 
 	select_color(app);
 	tmp = stack->last;
@@ -62,7 +62,7 @@ static	void	print_stack_details(t_stack *stack, t_app *app)
 	ft_printf("{EOC}");
 }
 
-void		print_stacks_details(t_app *app)
+void			print_stacks_details(t_app *app)
 {
 	ft_printf("{FG_BLUE}");
 	ft_printf("\n{BOLD}    A:{EOC}");

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   list2.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mfroehly <mfroehly@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/01/17 08:09:06 by mfroehly          #+#    #+#             */
+/*   Updated: 2016/01/17 08:09:07 by mfroehly         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	read_elem(t_app *app, int i, unsigned int nbr_nb)
@@ -12,8 +24,8 @@ void	read_elem(t_app *app, int i, unsigned int nbr_nb)
 
 void	set_stack_numbers(t_app *app)
 {
-	t_elem *tmp;
-	int i;
+	t_elem	*tmp;
+	int		i;
 
 	i = 0;
 	tmp = app->a.last;

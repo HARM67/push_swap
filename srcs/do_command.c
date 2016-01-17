@@ -1,6 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   do_command.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mfroehly <mfroehly@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/01/17 08:20:44 by mfroehly          #+#    #+#             */
+/*   Updated: 2016/01/17 09:23:05 by mfroehly         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void	do_command(t_app *app, unsigned char command)
+static void	do_command2(t_app *app, unsigned int command)
+{
+	if (command == SA)
+		swap(&app->a);
+	else if (command == SB)
+		swap(&app->b);
+	else if (command == SS)
+	{
+		swap(&app->a);
+		swap(&app->b);
+	}
+	else if (command == PA)
+		push(&app->a, &app->b);
+	else if (command == PB)
+		push(&app->b, &app->a);
+}
+
+void		do_command(t_app *app, unsigned char command)
 {
 	if (command == RA)
 		rotate(&app->a);
@@ -22,22 +51,11 @@ void	do_command(t_app *app, unsigned char command)
 		reverse_rotate(&app->a);
 		reverse_rotate(&app->b);
 	}
-	else if (command == SA)
-		swap(&app->a);
-	else if (command == SB)
-		swap(&app->b);
-	else if (command == SS)
-	{
-		swap(&app->a);
-		swap(&app->b);
-	}
-	else if (command == PA)
-		push(&app->a, &app->b);
-	else if (command == PB)
-		push(&app->b, &app->a);
+	else
+		do_command2(app, command);
 }
 
-void	do_reverse_command(t_app *app, unsigned char command)
+void		do_reverse_command(t_app *app, unsigned char command)
 {
 	if (command >= RA && command <= RR)
 		do_command(app, command + 3);

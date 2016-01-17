@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pre_resolve.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mfroehly <mfroehly@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/01/17 08:03:12 by mfroehly          #+#    #+#             */
+/*   Updated: 2016/01/17 08:03:13 by mfroehly         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static int		insert_elem_first(t_elem **lst, t_elem *n_elem, t_elem **lst2)
@@ -43,7 +55,7 @@ static int		insert_elem(t_elem *lst, t_elem *n_elem, t_elem **lst2)
 			return (1);
 		}
 		lst = lst->pre_next;
-	}	
+	}
 	return (0);
 }
 
@@ -67,8 +79,10 @@ void			pre_resolve(t_app *app)
 	p = app->a.last;
 	while (p)
 	{
-		if (insert_elem_first(&(app->pre), p, &(app->pre_last)));
-		else if (insert_elem_back(&(app->pre), p));
+		if (insert_elem_first(&(app->pre), p, &(app->pre_last)))
+			;
+		else if (insert_elem_back(&(app->pre), p))
+			;
 		else
 			insert_elem(app->pre, p, &(app->pre_last));
 		p = p->next;

@@ -6,7 +6,7 @@
 /*   By: mfroehly <mfroehly@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 19:54:32 by mfroehly          #+#    #+#             */
-/*   Updated: 2016/01/12 19:58:42 by mfroehly         ###   ########.fr       */
+/*   Updated: 2016/01/17 08:11:10 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,26 +23,23 @@ void	go_reverse(t_app *app, t_elem *elem)
 			elem->distance_a++;
 			elem->distance_b++;
 			insert_command(app, RRR);
-			app->nb_cmd++;
 		}
 		else if (elem->distance_a < 0)
 		{
 			insert_command(app, RRA);
 			reverse_rotate(&app->a);
 			elem->distance_a++;
-			app->nb_cmd++;
 		}
 		else if (elem->distance_b < 0)
 		{
 			insert_command(app, RRB);
 			reverse_rotate(&app->b);
 			elem->distance_b++;
-			app->nb_cmd++;
 		}
 	}
 }
 
-void		go(t_app *app, t_elem *elem)
+void	go(t_app *app, t_elem *elem)
 {
 	while (elem->distance_a > 0 || elem->distance_b > 0)
 	{
@@ -53,21 +50,18 @@ void		go(t_app *app, t_elem *elem)
 			rotate(&app->b);
 			elem->distance_a--;
 			elem->distance_b--;
-			app->nb_cmd++;
 		}
 		else if (elem->distance_a > 0)
 		{
 			insert_command(app, RA);
 			rotate(&app->a);
 			elem->distance_a--;
-			app->nb_cmd++;
 		}
 		else if (elem->distance_b > 0)
 		{
 			insert_command(app, RB);
 			rotate(&app->b);
 			elem->distance_b--;
-			app->nb_cmd++;
 		}
 	}
 	go_reverse(app, elem);
