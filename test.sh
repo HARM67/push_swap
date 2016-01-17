@@ -12,7 +12,7 @@
 #./push_swap `ruby -e "puts (-5000..5000).to_a.shuffle.join(' ')"` -md -c -h
 #./push_swap 5 6 4 3 2 1 -md -c -h
 
-./push_swap `ruby -e "puts (-10..10).to_a.shuffle.join(' ')"` -v -c -h -md
+#./push_swap `ruby -e "puts (-10..10).to_a.shuffle.join(' ')"` -v -c -h -md
 #./push_swap `ruby -e "puts (-500..500).to_a.shuffle.join(' ')"` -c -h -md
 #./push_swap `ruby -e "puts (-100..100).to_a.shuffle.join(' ')"` -c -h -md
 #./push_swap `ruby -e "puts (-10..10).to_a.shuffle.join(' ')"` -c -h -md
@@ -29,3 +29,5 @@
 #./push_swap 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
 #./push_swap 8 5 6 3 1 2 -c -h -md#
 #./push_swap 1 2 3 4 5 6 -c -h -md
+#./push_swap 5 50 500 5000 50000 500000  -c -h -m
+./push_swap `ruby -e "puts (-5000..5000).to_a.reverse.insert(rand(8000) + 1000, 10001).join(' ')"`

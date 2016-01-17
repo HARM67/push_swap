@@ -6,7 +6,7 @@
 /*   By: mfroehly <mfroehly@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 20:39:51 by mfroehly          #+#    #+#             */
-/*   Updated: 2016/01/17 08:01:24 by mfroehly         ###   ########.fr       */
+/*   Updated: 2016/01/17 11:42:35 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,17 @@ static void	boucle2(t_app *app)
 		go_b(app);
 		insert_command(app, PA);
 		push(&app->a, &app->b);
+		make_dec(app);
 		if (app->debug)
 			print_stacks(app);
 		app->nb_cmd++;
 	}
 	come_to_start(app);
 	make_dec(app);
-	if (app->debug)
+	if (app->debug || app->manual_debug)
 	{
 		print_stacks(app);
-		ft_printf("fait en %d commande(s)\n", app->nb_cmd);
+		ft_printf("fait en %d commande(s)\n", app->nb_cmd2);
 	}
 }
 
